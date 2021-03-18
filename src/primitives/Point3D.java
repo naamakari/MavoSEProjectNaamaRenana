@@ -2,6 +2,9 @@ package primitives;
 
 import java.util.Objects;
 
+/**
+ * class to represent point at the area
+ */
 public class Point3D {
     final Coordinate _x;
     final Coordinate _y;
@@ -9,12 +12,7 @@ public class Point3D {
 
     public final static Point3D ZERO = new Point3D(0d, 0d, 0d);
 
-    public Point3D(Coordinate x, Coordinate y, Coordinate z) {
-        _x = x;
-        _y = y;
-        _z = z;
-    }
-
+    ///constructor
     public Point3D(double x, double y, double z) {
         //  this(new Coordinate(x),new Coordinate(y),new Coordinate(z));
 
@@ -23,6 +21,7 @@ public class Point3D {
         _z = new Coordinate(z);
 
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -37,15 +36,58 @@ public class Point3D {
         return "(" + _x + ", " + _y + ", " + _z + ')';
     }
 
+    /**
+     * function that make sub between 2 vectors
+     *
+     * @param pt2 the point at origin of vector
+     * @return new Vector
+     */
     public Vector subtract(Point3D pt2) {
-        Point3D head=new Point3D(
-                _x._coord-pt2._x._coord,
-                _y._coord-pt2._y._coord,
-                _z._coord-pt2._z._coord
+        Point3D head = new Point3D(
+                _x._coord - pt2._x._coord,
+                _y._coord - pt2._y._coord,
+                _z._coord - pt2._z._coord
         );
         if (ZERO.equals(head)) {
             throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
         }
         return new Vector(head);
+    }
+
+    /**
+     * function that add vector to point
+     * @param vec the vector we add
+     * @return the origin point plus the vector
+     */
+    public Point3D add(Vector vec) {
+        Point3D newPoint = new Point3D(
+                _x._coord + vec._head._x._coord,
+                _y._coord + vec._head._y._coord,
+                _z._coord + vec._head._z._coord
+        );
+        // if (ZERO.equals(newPoint)) {
+        //   throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
+        //}
+        return newPoint;
+    }
+
+    /**
+     * function that calculate the distance between 2 points
+     * @param po the second point in 3D
+     * @return squared distance
+     */
+    public double distanceSquared(Point3D po) {
+        return (_x._coord - po._x._coord * _x._coord - po._x._coord) +
+                (_y._coord - po._y._coord * _y._coord - po._y._coord) +
+                (_z._coord - po._z._coord * _z._coord - po._z._coord);
+    }
+
+    /**
+     * euclidean distance
+     * @param po2 the second point
+     * @return distance
+     */
+    public double distance(Point3D po2) {
+        return Math.sqrt(distanceSquared(po2));
     }
 }
