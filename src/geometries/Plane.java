@@ -14,11 +14,12 @@ public class Plane implements Geometry {
     //constructor of 3 points
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
         _q0= p1;
-//        Vector v1=p2.subtract(p1);
-//        Vector v2=p3.subtract(p1);
-//        Vector n=v1.crossProduct(v2);
-//        _normal=n.normalize();
-        _normal = null;
+        Vector v1=p2.subtract(p1);
+        Vector v2=p3.subtract(p1);
+
+        Vector n=v1.crossProduct(v2);
+
+        _normal = n.normalize();
     }
 
     //constructor of point and vector
@@ -50,4 +51,5 @@ public class Plane implements Geometry {
     public Vector getNormal(Point3D point) {
         return null;
     }
+
 }

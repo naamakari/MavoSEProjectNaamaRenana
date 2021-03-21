@@ -7,7 +7,7 @@ import primitives.Vector;
  * class that implements the geometry interface and extends from polygon
  * contain 3 points for triangle
  */
-public class Triangle extends Polygon implements Geometry {
+public class Triangle extends Polygon {
     Point3D _vertex1;
     Point3D _vertex2;
     Point3D _vertex3;
@@ -54,4 +54,5 @@ public class Triangle extends Polygon implements Geometry {
                 ", vertex3=" + _vertex3 +
                 '}';
     }
+
 }

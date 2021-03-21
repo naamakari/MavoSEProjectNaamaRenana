@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.isZero;
+
 /**
  * class that implements geometry interface
  * contain axis ray and radius
@@ -43,7 +45,25 @@ public class Tube implements Geometry{
     }
 
     @Override
-    public Vector getNormal(Point3D point) {
-        return null;
+    public Vector getNormal(Point3D p) {
+        Point3D p0=_axisRay.getP0();
+        Vector v=_axisRay.getDir();
+        Vector P0_P=p.subtract(p0);
+
+        double t=v.dotProduct(P0_P);
+
+        /**
+         * if the length is zero it is mean that p0 equals to p
+         */
+        if(isZero(t)){
+            return P0_P.normalize();
+        }
+
+        Point3D O=p0.add(v.scale(t));
+        if (O.equals(p)){
+            throw new IllegalArgumentException("point p cannot be on the tube's axis");
+        }
+        return p.subtract(O).normalize();
     }
+
 }

@@ -22,6 +22,17 @@ public class Point3D {
 
     }
 
+//    public double getX() {
+//        return _x._coord;
+//    }
+//
+//    public double getY() {
+//        return _y._coord;
+//    }
+//
+//    public double getZ() {
+//        return _z._coord;
+//    }
 
     @Override
     public boolean equals(Object o) {

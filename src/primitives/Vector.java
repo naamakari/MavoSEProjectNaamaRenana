@@ -179,4 +179,5 @@ public class Vector {
         newVec.normalize();//using the previous function
         return newVec;
     }
+
 }

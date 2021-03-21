@@ -28,7 +28,7 @@ public class Ray {
      * @return dir
      */
     public Vector getDir() {
-        return _dir;
+        return new Vector(_dir._head);
     }
 
     @Override
