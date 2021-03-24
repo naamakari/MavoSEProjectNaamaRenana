@@ -4,6 +4,7 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 /**
@@ -50,7 +51,7 @@ public class Tube implements Geometry{
         Vector v=_axisRay.getDir();
         Vector P0_P=p.subtract(p0);
 
-        double t=v.dotProduct(P0_P);
+        double t=alignZero(v.dotProduct(P0_P));
 
         /**
          * if the length is zero it is mean that p0 equals to p

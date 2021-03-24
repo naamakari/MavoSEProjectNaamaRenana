@@ -1,6 +1,8 @@
 package geometries;
 
+import primitives.Point3D;
 import primitives.Ray;
+import primitives.Vector;
 
 /**
  * class that implements geometry interface and extends from tube
@@ -31,5 +33,15 @@ public class Cylinder extends Tube implements Geometry{
                 ", _radius=" + _radius +
                 '}';
     }
+
+    /**
+     * bonus
+     * @param p
+     * @return
+     */
+//    @Override
+//    public Vector getNormal(Point3D p) {
+//        return super.getNormal(p);
+//    }
 
 }

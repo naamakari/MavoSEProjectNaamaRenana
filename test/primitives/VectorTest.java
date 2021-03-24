@@ -39,7 +39,7 @@ void testVectorZero(){
         assertTrue(isZero(vr.dotProduct(v2)),"crossProduct() result is not orthogonal to 2nd operand");
 
         // =============== Boundary Values Tests ==================
-        // TC11: test zero vector from cross-productof co-lined vectors
+        // TC11: test zero vector from cross-product of co-lined vectors
         Vector v3 = new Vector(-2, -4, -6);
         assertThrows(IllegalArgumentException.class,
                 () -> v1.crossProduct(v3),
@@ -50,10 +50,14 @@ void testVectorZero(){
         // } catch (Exception e) {}
 
     }
-
+    /**
+     * Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
+     */
     @Test
     void testDotProduct() {
+        //TC0:check if the vectors are orthogonal
         assertTrue(isZero(v1.dotProduct(v3)),"ERROR: dotProduct() for orthogonal vectors is not zero");
+
         assertTrue(isZero(v1.dotProduct(v2) + 28),"ERROR: dotProduct() wrong value");
     }
 

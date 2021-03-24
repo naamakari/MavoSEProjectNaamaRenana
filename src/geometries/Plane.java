@@ -14,6 +14,7 @@ public class Plane implements Geometry {
     //constructor of 3 points
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
         _q0= p1;
+        //check direction of vectors
         Vector v1=p2.subtract(p1);
         Vector v2=p3.subtract(p1);
 
@@ -22,14 +23,18 @@ public class Plane implements Geometry {
         _normal = n.normalize();
     }
 
-    //constructor of point and vector
+    /**constructor of point and vector
+     * normal vector for plane, will normalized automatically
+     * @param point
+     * @param vector
+     */
     public Plane(Point3D point, Vector vector) {
         _q0 = point;
         _normal = vector.normalized();
     }
 
     /**
-     * getter for point q0
+     * getter for field q0
      * @return q0
      */
     public Point3D getQ0() {
@@ -38,9 +43,9 @@ public class Plane implements Geometry {
 
     /**
      * getter of the normal vector of the Plane
-     * @deprecated use the oveeriden version from Geometry
+     * @deprecated use the overridden version from Geometry
      * {@link Plane#getNormal(Point3D)} with null for parameter value.
-     * @return
+     * @return reference to normal vector of the plane
      */
     @Deprecated
     public Vector getNormal() {
@@ -49,7 +54,7 @@ public class Plane implements Geometry {
 
     @Override
     public Vector getNormal(Point3D point) {
-        return null;
+        return _normal;
     }
 
 }
