@@ -88,9 +88,9 @@ public class Point3D {
      * @return squared distance
      */
     public double distanceSquared(Point3D po) {
-        return (_x._coord - po._x._coord * _x._coord - po._x._coord) +
-                (_y._coord - po._y._coord * _y._coord - po._y._coord) +
-                (_z._coord - po._z._coord * _z._coord - po._z._coord);
+        return ((_x._coord - po._x._coord) * (_x._coord - po._x._coord)) +
+                ((_y._coord - po._y._coord) * (_y._coord - po._y._coord)) +
+                ((_z._coord - po._z._coord) * (_z._coord - po._z._coord));
     }
 
     /**

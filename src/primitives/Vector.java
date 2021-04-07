@@ -113,6 +113,12 @@ public class Vector {
         return new Vector(_head._x._coord - vec._head._x._coord,
                 _head._y._coord - vec._head._y._coord,
                 _head._z._coord - vec._head._z._coord);
+//        if (vec.equals(this)) {
+//            throw new IllegalArgumentException("parameter vector should be something else");
+//        }
+//        return vec._head.subtract(_head);
+
+
     }
 
     /**
