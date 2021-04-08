@@ -10,6 +10,9 @@ class Point3DTest {
     Point3D p3 =new Point3D(1,2,2);
     Vector v1 = new Vector(1, 2, 3);
 
+    /**
+     * test that checks if substract is doing well
+     */
     @Test
     void testSubtract() {
         // ============ Equivalence Partitions Tests ==============
