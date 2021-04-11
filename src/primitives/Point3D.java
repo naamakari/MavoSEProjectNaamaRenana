@@ -67,6 +67,7 @@ public class Point3D {
 
     /**
      * function that add vector to point
+     *
      * @param vec the vector we add
      * @return the origin point plus the vector
      */
@@ -84,6 +85,7 @@ public class Point3D {
 
     /**
      * function that calculate the distance between 2 points
+     *
      * @param po the second point in 3D
      * @return squared distance
      */
@@ -95,10 +97,26 @@ public class Point3D {
 
     /**
      * euclidean distance
+     *
      * @param po2 the second point
      * @return distance
      */
     public double distance(Point3D po2) {
         return Math.sqrt(distanceSquared(po2));
+    }
+
+    /**
+     * function that checks if points are at the same line
+     * @param p1
+     * @return
+     */
+    public boolean isSameLine(Point3D p1) {
+
+        double d1 = (double) (p1._x._coord / _x._coord);
+        if (p1._y._coord != _y._coord * d1 || p1._z._coord != _z._coord * d1) {
+            //throw new IllegalArgumentException("point are on the same line");
+            return false;
+        }
+        return true;
     }
 }
