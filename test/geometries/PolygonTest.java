@@ -96,4 +96,7 @@ public class PolygonTest {
         //  assertEquals( new Vector(sqrt3, sqrt3, sqrt3), (Supplier<String>) pl.getNormal(new Point3D(0, 0, 1)),"Bad normal to square");
     }
 
+    @Test
+    void testFindIntersections() {
+    }
 }

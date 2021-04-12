@@ -4,6 +4,8 @@ import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /**
  * class that implements geometry interface and extends from tube
  * because it is have a height ant it is not infinity
@@ -44,4 +46,8 @@ public class Cylinder extends Tube implements Geometry{
 //        return super.getNormal(p);
 //    }
 
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return super.findIntersections(ray);
+    }
 }

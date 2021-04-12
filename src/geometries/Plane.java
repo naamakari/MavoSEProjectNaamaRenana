@@ -1,7 +1,13 @@
 package geometries;
 
 import primitives.Point3D;
+import primitives.Ray;
 import primitives.Vector;
+
+import java.util.List;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * class that implements geometry interface
@@ -28,7 +34,7 @@ public class Plane implements Geometry {
         }
         Vector n = v1.crossProduct(v2);
 
-        _normal =n.normalize();
+        _normal = n.normalize();
     }
 
 
@@ -70,4 +76,33 @@ public class Plane implements Geometry {
         return _normal;
     }
 
+    /**
+     * function that find the intersections of the ray with the plane
+     * @param ray
+     * @return
+     */
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        Point3D P0 = ray.getP0();
+        Vector v = ray.getDir();
+        if (_q0.equals(P0)) {
+            return null;
+        }
+        Vector P0_Q0 = _q0.subtract(P0);
+
+        double mone = alignZero(_normal.dotProduct(P0_Q0));
+
+        if (isZero(mone)) {
+            return null;
+        }
+        //mechane
+        double nv = alignZero(_normal.dotProduct(v));
+        //ray is lying in the plane axis
+        if (isZero(nv)) {
+            return null;
+        }
+        double t = alignZero(mone / nv);
+        Point3D p = P0.add(v.scale(t));
+        return List.of(p);
+    }
 }
