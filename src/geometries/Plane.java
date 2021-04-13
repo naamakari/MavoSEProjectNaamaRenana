@@ -92,11 +92,15 @@ public class Plane implements Geometry {
 
         double mone = alignZero(_normal.dotProduct(P0_Q0));
 
+
         if (isZero(mone)) {
             return null;
         }
         //mechane
         double nv = alignZero(_normal.dotProduct(v));
+
+
+
         //ray is lying in the plane axis
         if (isZero(nv)) {
             return null;

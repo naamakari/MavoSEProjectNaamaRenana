@@ -39,34 +39,39 @@ class TriangleTest {
                 new Point3D(0, 1, 0),
                 new Point3D(0, 0, 1));
         // ============ Equivalence Partitions Tests ==============
-
+        Ray ray;
         // TC01: Point is inside the triangle
-        Ray ray1 = new Ray(new Point3D(1, 1, 1), new Vector(-1, -1, -1));
-        assertEquals(new Point3D(1d / 3, 1d / 3, 1d / 3), triangle.findIntersections(ray1).get(0), "Point is not inside the triangle");
+        ray = new Ray(new Point3D(1, 1, 1), new Vector(-1, -1, -1));
+        assertEquals(new Point3D(1d / 3, 1d / 3, 1d / 3), triangle.findIntersections(ray).get(0), "Point is not inside the triangle");
 
         // TC02: Point is outside against edge
-        Ray ray2 = new Ray(new Point3D(0, 0, -1), new Vector(1, 1, 0));
-        assertEquals(new Point3D(1, 1, -1), plane.findIntersections(ray2).get(0), "not intersection at plane");
-        assertNull(triangle.findIntersections(ray2), "Point is outside against edge");
+        ray = new Ray(new Point3D(0, 0, -1), new Vector(1, 1, 0));
+        assertEquals(new Point3D(1, 1, -1), plane.findIntersections(ray).get(0), "not intersection at plane");
+        assertNull(triangle.findIntersections(ray), "Point is outside against edge");
 
         // TC03: Point is outside against vertex
-        Ray ray3 = new Ray(new Point3D(0, 0, 2), new Vector(-1, -1, 0));
-        assertEquals(new Point3D(-0.5, -0.5, 2), plane.findIntersections(ray3).get(0), "not intersection at plane");
-        assertNull(triangle.findIntersections(ray3), "Point is outside against edge");
+        ray = new Ray(new Point3D(0, 0, 2), new Vector(-1, -1, 0));
+        assertEquals(new Point3D(-0.5, -0.5, 2), plane.findIntersections(ray).get(0), "not intersection at plane");
+        assertNull(triangle.findIntersections(ray), "Point is outside against edge");
 
 
         // =============== Boundary Values Tests ==================
 
         // **** Group: the ray begins "before" the plane
         // TC11: Point is on edge
-
+        ray = new Ray(new Point3D(2, 0, 0), new Vector(-2, 0.5, 0.5));
+        assertEquals(new Point3D(0, 0.5, 0.5), plane.findIntersections(ray).get(0), "not intersected the plane");
+        assertNull(triangle.findIntersections(ray), "point is on edge");
 
         // TC12: Point is on vertex
-
-
+        ray = new Ray(new Point3D(2, 0, 0), new Vector(-1, 0, 0));
+        assertEquals(new Point3D(1, 0, 0), plane.findIntersections(ray).get(0), "point are not at the plane");
+        assertNull(triangle.findIntersections(ray), "point on the vertex");
 
         // TC13: Point is on edge's continuation
-
+        ray = new Ray(new Point3D(2, 0, 0), new Vector(-2, -0.5, 1.5));
+        assertEquals(new Point3D(0, -0.5, 1.5), plane.findIntersections(ray).get(0), "not intersected the plane");
+        assertNull(triangle.findIntersections(ray), "Point is on edge's continuation");
 
     }
 }
