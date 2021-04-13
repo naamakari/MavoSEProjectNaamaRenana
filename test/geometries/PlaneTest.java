@@ -71,8 +71,13 @@ class PlaneTest {
         ray = new Ray(new Point3D(0, 0, 2), new Vector(0, 0, 1));
         assertNull(plane.findIntersections(ray), "Ray is orthogonal to the plane and starts after the plane");
 
-        // TC19: Ray is neither orthogonal nor parallel to and begins at the plane (𝑃0 is in the plane, but not the ray)
-        // TC20:  Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane (Q)
+        // TC19: Ray is neither orthogonal nor parallel to and begins at the plane (p0 is in the plane, but not the ray)
+        ray=new Ray(new Point3D(1,1,1),new Vector(-1,-1,1));
+        assertNull(plane.findIntersections(ray),"Ray is neither orthogonal nor parallel to and begins at the plane (p0 is in the plane, but not the ray)");
+
+        // TC20:  Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane (q)
+        ray=new Ray(new Point3D(0,1,1),new Vector(0,-1,1));
+        assertNull(plane.findIntersections(ray)," Ray is neither orthogonal nor parallel to the plane and begins in the same point which appears as reference point in the plane (q)");
 
     }
 }

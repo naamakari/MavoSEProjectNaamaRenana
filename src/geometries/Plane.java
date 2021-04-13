@@ -99,13 +99,15 @@ public class Plane implements Geometry {
         //mechane
         double nv = alignZero(_normal.dotProduct(v));
 
-
-
         //ray is lying in the plane axis
         if (isZero(nv)) {
             return null;
         }
+
         double t = alignZero(mone / nv);
+        if(t<=0){
+            return null;
+        }
         Point3D p = P0.add(v.scale(t));
         return List.of(p);
     }
