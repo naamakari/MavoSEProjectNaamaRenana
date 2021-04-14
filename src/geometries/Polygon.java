@@ -144,6 +144,7 @@ public class Polygon implements Geometry {
         if(isZero(result)){
             return null;
         }
+
         //if the sign of the points that we found are the same
         if(isPositive!=result>0){
             return null;

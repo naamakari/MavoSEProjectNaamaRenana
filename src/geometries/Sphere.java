@@ -90,12 +90,16 @@ public class Sphere implements Geometry {
         }
         //one intersection point
         if (t1 > 0) {
-            Point3D p1 = P0.add(v.scale(t1));
+           // Point3D p1 = P0.add(v.scale(t1));
+            //refactoring
+           Point3D p1 = ray.getPoint(t1);
             return List.of(p1);
         }
         //one intersection point
         if (t2 > 0) {
-            Point3D p2 = P0.add(v.scale(t2));
+            //Point3D p2 = P0.add(v.scale(t2));
+            //refactoring
+            Point3D p2 = ray.getPoint(t2);
             return List.of(p2);
         }
         return null;

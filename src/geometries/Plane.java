@@ -108,7 +108,8 @@ public class Plane implements Geometry {
         if(t<=0){
             return null;
         }
-        Point3D p = P0.add(v.scale(t));
+       // Point3D p = P0.add(v.scale(t));
+        Point3D p = ray.getPoint(t);
         return List.of(p);
     }
 }

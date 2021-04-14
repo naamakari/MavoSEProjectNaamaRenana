@@ -57,6 +57,10 @@ public class Triangle extends Polygon {
     public List<Point3D> findIntersections(Ray ray) {
         //the point that we found at the plane
         List<Point3D> list = plane.findIntersections(ray);
+        if(list==null) {
+            return null;
+        }
+
         Point3D p = list.get(0);
 
         //we will check if the point is inside the triangle

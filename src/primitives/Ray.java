@@ -43,4 +43,11 @@ public class Ray {
     public String toString() {
         return "p(0,0): " + _p0 + ", direction:" + _dir;
     }
+
+    public Point3D getPoint(double t){
+        Point3D p=getP0().add(getDir().scale(t));
+        return p;
+    }
+
+
 }
