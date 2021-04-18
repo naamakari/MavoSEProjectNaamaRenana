@@ -24,6 +24,7 @@ class VectorTest {
      */
     @Test
     public void testCrossProduct() {
+       //boker tov
         Vector v1 = new Vector(1, 2, 3);
 
         // ============ Equivalence Partitions Tests ==============
