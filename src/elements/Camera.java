@@ -15,6 +15,13 @@ public class Camera {
     private double _width;
     private double _height;
 
+    /**
+     * constructor
+     *
+     * @param p0  start point
+     * @param vTo z axis
+     * @param vUp y axis
+     */
     public Camera(Point3D p0, Vector vTo, Vector vUp) {
         _p0 = p0;
         _vTo = vTo.normalized();
@@ -28,8 +35,8 @@ public class Camera {
     /**
      * like builder pattern
      *
-     * @param width
-     * @param height
+     * @param width  of the view plane
+     * @param height of the view plane
      * @return
      */
     public Camera setViewPlaneSize(double width, double height) {
@@ -43,22 +50,36 @@ public class Camera {
         return this;
     }
 
-
+    /**
+     * function for finding the ray that pass at the center of the pixel
+     *
+     * @param nX width of the row, amount of columns
+     * @param nY width of the column, amount of rows
+     * @param j  y axis
+     * @param i  x axis
+     * @return
+     */
     public Ray constructRayThroughPixel(int nX, int nY, int j, int i) {
-        Point3D Pc = _p0.add(_vTo.scale(_distance));
 
+        Point3D Pc = _p0.add(_vTo.scale(_distance));//image center
+
+//Ratio (pixel width & height)
         double Ry = _height / nY;
         double Rx = _height / nX;
 
+        //Pixel[i,j] center
         double Yi = -(i - (nY - 1) / 2d) * Ry;
         double Xj = (j - (nX - 1) / 2d) * Rx;
 
-        Point3D Pij=Pc;
-        if(!isZero(Xj)){
-            Pij=Pij.add(_vRight.scale(Xj));
+        Point3D Pij = Pc;
+
+//checks numbers does not make zero vector
+        if (!isZero(Xj)) {
+            Pij = Pij.add(_vRight.scale(Xj));
         }
-        if(!isZero(Yi)){
-            Pij=Pij.add(_vUp.scale(Yi));
+
+        if (!isZero(Yi)) {
+            Pij = Pij.add(_vUp.scale(Yi));
         }
 
         return new Ray(_p0, Pij.subtract(_p0));
