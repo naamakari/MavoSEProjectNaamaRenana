@@ -14,8 +14,9 @@ class VectorTest {
 
     @Test
     void testVectorZero() {
+        //check Zero vector non creation
         assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0), "cannot be vector (0,0,0)");
-
+        out.println("eize yofi");
     }
 
     /**
