@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RayTest {
 
+    /**
+     * test to check the fonction of find the closest point to a ray
+     */
     @Test
     void testFindClosestPoint() {
         Ray ray = new Ray(new Point3D(0, -1, 0), new Vector(0, 1, 1));
