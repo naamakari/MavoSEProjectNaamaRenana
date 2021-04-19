@@ -1,5 +1,6 @@
 package primitives;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -49,5 +50,26 @@ public class Ray {
         return p;
     }
 
+    /**
+     * function to find the closest point to the ray
+     * @param point3DList the list of the points
+     * @return the closest point to the start of the ray
+     */
+    public Point3D findClosestPoint(List<Point3D> point3DList){
+        if(point3DList==null||point3DList.size()==0){
+            return null;
+        }
+        Point3D minPoint= point3DList.get(0);
+        double minDistance=_p0.distance(point3DList.get(0));
+
+        for (int i = 1; i < point3DList.size(); i++) {
+            double distance=_p0.distance(point3DList.get(i));
+            if(distance<minDistance){
+                minDistance=distance;
+                minPoint=point3DList.get(i);
+            }
+        }
+        return  minPoint;
+    }
 
 }
