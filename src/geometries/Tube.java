@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
  * class that implements geometry interface
  * contain axis ray and radius
  */
-public class Tube implements Geometry{
+public class Tube extends Geometry{
     Ray _axisRay;
     double _radius;
 
@@ -71,6 +71,11 @@ public class Tube implements Geometry{
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
+        return null;
+    }
+
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         return null;
     }
 }

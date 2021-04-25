@@ -17,30 +17,6 @@ public class Triangle extends Polygon {
         super(vertex1, vertex2, vertex3);
     }
 
-//    /**
-//     * getter for vertex 1
-//     * @return vertex 1
-//     */
-//    public Point3D getVertex1() {
-//        return _vertex1;
-//    }
-//
-//    /**
-//     * getter for vertex 2
-//     * @return vertex 2
-//     */
-//    public Point3D getVertex2() {
-//        return _vertex2;
-//    }
-//
-//    /**
-//     * getter for vertex 3
-//     * @return vertex 3
-//     */
-//    public Point3D getVertex3() {
-//        return _vertex3;
-//    }
-
     @Override
     public Vector getNormal(Point3D point) {
         return plane.getNormal(point);
@@ -82,4 +58,5 @@ public class Triangle extends Polygon {
         }
         return null;
     }
+
 }

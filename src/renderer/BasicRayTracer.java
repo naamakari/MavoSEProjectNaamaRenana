@@ -10,13 +10,13 @@ import java.util.List;
 /**
  * class that inheritor the abstract class RayTracerBase
  */
-public class RayTracerBasic extends RayTracerBase{
+public class BasicRayTracer extends RayTracerBase{
 
     /**
      * constructor, use the father
      * @param scene
      */
-    public RayTracerBasic(Scene scene) {
+    public BasicRayTracer(Scene scene) {
         super(scene);
     }
 
@@ -33,8 +33,6 @@ public class RayTracerBasic extends RayTracerBase{
         }
         Point3D closestPoint=ray.findClosestPoint(intersectionsList);
         return calColor(closestPoint);
-
-
     }
 
     /**
@@ -44,6 +42,7 @@ public class RayTracerBasic extends RayTracerBase{
      */
     public Color calColor(Point3D point3D){
         return _scene._ambientLight.getIntensity();
+
     }
 
 }

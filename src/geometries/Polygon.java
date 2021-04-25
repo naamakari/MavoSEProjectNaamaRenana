@@ -12,7 +12,7 @@ import static primitives.Util.*;
  *
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
@@ -151,5 +151,62 @@ public class Polygon implements Geometry {
         }
 
             return listOfPoints;
+    }
+
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        if (plane.findIntersections(ray) == null) {
+            return null;
+        }
+
+        //the point that we found at the plane
+        List<GeoPoint> listOfPoints = plane.findGeoIntersections(ray);
+        GeoPoint p = listOfPoints.get(0);
+
+        //we will check if the point is inside the triangle
+        Vector v1 = vertices.get(0).subtract(ray.getP0());
+        Vector v2 = vertices.get(1).subtract(ray.getP0());
+        Vector n = v2.crossProduct(v1).normalize();
+
+        double result=alignZero((ray.getDir()).dotProduct(n));
+        if(isZero(result)){
+            return null;
+        }
+        boolean isPositive=result>0;
+
+        for (int i = 2;i<vertices.size();i++ ){
+            v1=v2;
+            v2=vertices.get(i).subtract(ray.getP0());
+
+            n= v2.crossProduct(v1).normalize();
+
+            result=alignZero((ray.getDir()).dotProduct(n));
+            if(isZero(result)){
+                return null;
+            }
+            //if the sign of the points that we found are the same
+            if(isPositive!=result>0){
+                return null;
+            }
+
+        }
+
+        //doing the last couple of the polygon
+        v1=v2;
+        v2=vertices.get(0).subtract(ray.getP0());
+
+        n= v2.crossProduct(v1).normalize();
+
+        result=alignZero((ray.getDir()).dotProduct(n));
+        //if there is no point
+        if(isZero(result)){
+            return null;
+        }
+
+        //if the sign of the points that we found are the same
+        if(isPositive!=result>0){
+            return null;
+        }
+        return List.of(new GeoPoint(this,listOfPoints.get(0).point));
     }
 }
