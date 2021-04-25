@@ -12,7 +12,7 @@ import static primitives.Util.alignZero;
  * class that implements geometry interface
  * contain point of the center of the sphere and the radius
  */
-public class Sphere implements Geometry {
+public class Sphere extends Geometry {
     Point3D _center;
     double _radius;
 
@@ -101,6 +101,57 @@ public class Sphere implements Geometry {
             //refactoring
             Point3D p2 = ray.getPoint(t2);
             return List.of(p2);
+        }
+        return null;
+    }
+
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        Point3D P0 = ray.getP0();
+        Vector v = ray.getDir();
+        if (P0.equals(_center)) {
+            return List.of(new GeoPoint(this,_center.add(v.scale(_radius))));
+        }
+        Vector u = _center.subtract(P0);
+
+        double tm = alignZero(v.dotProduct(u));
+
+        double d = alignZero(Math.sqrt(u.lengthSquared() - tm * tm));
+        //no intersections the ray direction is above sphere
+        if (d > _radius) {
+            return null;
+        }
+
+        double th = alignZero(Math.sqrt(_radius * _radius - d * d));
+
+        double t1 = alignZero(tm - th);
+        double t2 = alignZero(tm + th);
+
+        //in case the ray tangent to the sphere and it mean that th=0
+        if (t1 == t2) {
+            return null;
+        }
+
+        //2 intersections points
+        if (t1 > 0 && t2 > 0) {
+            Point3D p1 = P0.add(v.scale(t1));
+            Point3D p2 = P0.add(v.scale(t2));
+
+            return List.of(new GeoPoint(this,p1),new GeoPoint(this, p2));
+        }
+        //one intersection point
+        if (t1 > 0) {
+            // Point3D p1 = P0.add(v.scale(t1));
+            //refactoring
+            Point3D p1 = ray.getPoint(t1);
+            return List.of(new GeoPoint(this,p1));
+        }
+        //one intersection point
+        if (t2 > 0) {
+            //Point3D p2 = P0.add(v.scale(t2));
+            //refactoring
+            Point3D p2 = ray.getPoint(t2);
+            return List.of(new GeoPoint(this,p2));
         }
         return null;
     }

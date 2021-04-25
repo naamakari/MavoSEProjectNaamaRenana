@@ -10,7 +10,7 @@ import java.util.List;
  * class that implements geometry interface and extends from tube
  * because it is have a height ant it is not infinity
  */
-public class Cylinder extends Tube implements Geometry{
+public class Cylinder extends Tube{
     double _height;
 
     //constructor
@@ -38,7 +38,7 @@ public class Cylinder extends Tube implements Geometry{
 
     /**
      * bonus
-     * @param p
+     //* @param p
      * @return
      */
 //    @Override

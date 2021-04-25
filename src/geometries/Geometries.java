@@ -10,6 +10,7 @@ import java.util.List;
  * this class helps us to implements design pattern- composite
  */
 public class Geometries implements Intersectable {
+
     List<Intersectable> _listGeometries=new LinkedList<>();
 
     /**
@@ -49,5 +50,14 @@ public class Geometries implements Intersectable {
         return intersections;
     }
 
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        List<GeoPoint> intersections = null;
+        for (Intersectable geometry : _listGeometries) {
+            List<GeoPoint> geoIntersections = geometry.findGeoIntersections(ray);
+            // if there are elements in geoIntersections – add them to intersections
+        }
+        return intersections;
+    }
 
 }

@@ -13,7 +13,7 @@ import static primitives.Util.isZero;
  * class that implements geometry interface
  * have point and normal vector
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     final Point3D _q0;
     final Vector _normal;
 
@@ -111,5 +111,38 @@ public class Plane implements Geometry {
        // Point3D p = P0.add(v.scale(t));
         Point3D p = ray.getPoint(t);
         return List.of(p);
+    }
+
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        Point3D P0 = ray.getP0();
+        Vector v = ray.getDir();
+        if (_q0.equals(P0)) {
+            return null;
+        }
+        Vector P0_Q0 = _q0.subtract(P0);
+
+        double mone = alignZero(_normal.dotProduct(P0_Q0));
+
+
+        if (isZero(mone)) {
+            return null;
+        }
+        //mechane
+        double nv = alignZero(_normal.dotProduct(v));
+
+        //ray is lying in the plane axis
+        if (isZero(nv)) {
+            return null;
+        }
+
+        double t = alignZero(mone / nv);
+        if(t<=0){
+            return null;
+        }
+        // Point3D p = P0.add(v.scale(t));
+        Point3D P = ray.getPoint(t);
+        return List.of(new GeoPoint(this,P));
+      //  return List.of(new GeoPoint(this,new Point3D()));
     }
 }
