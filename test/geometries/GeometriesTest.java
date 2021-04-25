@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 class GeometriesTest {
-
+//the objects involved in the Geometries
     Triangle triangle = new Triangle(new Point3D(0, 1.5, 0), new Point3D(0, 0.5, 0), new Point3D(0, 1, 1));
     Sphere sphere = new Sphere(new Point3D(0, 0, 1), 1d);
     Plane plane = new Plane(new Point3D(0, 1, 1), new Vector(0, -1, 1));
     Ray ray;
-    Geometries geo;
+    Geometries geo;    //composite object for all the geometries
 
     @Test
     void testFindIntersections() {
