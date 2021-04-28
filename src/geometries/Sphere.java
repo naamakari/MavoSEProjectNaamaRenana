@@ -56,55 +56,14 @@ public class Sphere extends Geometry {
 
     @Override
     public List<Point3D> findIntersections(Ray ray) {
-        Point3D P0 = ray.getP0();
-        Vector v = ray.getDir();
-        if (P0.equals(_center)) {
-            return List.of(_center.add(v.scale(_radius)));
-        }
-        Vector u = _center.subtract(P0);
-
-        double tm = alignZero(v.dotProduct(u));
-
-        double d = alignZero(Math.sqrt(u.lengthSquared() - tm * tm));
-        //no intersections the ray direction is above sphere
-        if (d > _radius) {
-            return null;
-        }
-
-        double th = alignZero(Math.sqrt(_radius * _radius - d * d));
-
-        double t1 = alignZero(tm - th);
-        double t2 = alignZero(tm + th);
-
-        //in case the ray tangent to the sphere and it mean that th=0
-        if (t1 == t2) {
-            return null;
-        }
-
-        //2 intersections points
-        if (t1 > 0 && t2 > 0) {
-            Point3D p1 = P0.add(v.scale(t1));
-            Point3D p2 = P0.add(v.scale(t2));
-
-            return List.of(p1, p2);
-        }
-        //one intersection point
-        if (t1 > 0) {
-           // Point3D p1 = P0.add(v.scale(t1));
-            //refactoring
-           Point3D p1 = ray.getPoint(t1);
-            return List.of(p1);
-        }
-        //one intersection point
-        if (t2 > 0) {
-            //Point3D p2 = P0.add(v.scale(t2));
-            //refactoring
-            Point3D p2 = ray.getPoint(t2);
-            return List.of(p2);
-        }
         return null;
     }
 
+    /**
+     *implements the method of find Geo intersections for sphere
+     * @param ray
+     * @return
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D P0 = ray.getP0();

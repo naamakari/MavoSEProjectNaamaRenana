@@ -83,36 +83,14 @@ public class Plane extends Geometry {
      */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
-        Point3D P0 = ray.getP0();
-        Vector v = ray.getDir();
-        if (_q0.equals(P0)) {
-            return null;
-        }
-        Vector P0_Q0 = _q0.subtract(P0);
-
-        double mone = alignZero(_normal.dotProduct(P0_Q0));
-
-
-        if (isZero(mone)) {
-            return null;
-        }
-        //mechane
-        double nv = alignZero(_normal.dotProduct(v));
-
-        //ray is lying in the plane axis
-        if (isZero(nv)) {
-            return null;
-        }
-
-        double t = alignZero(mone / nv);
-        if(t<=0){
-            return null;
-        }
-       // Point3D p = P0.add(v.scale(t));
-        Point3D p = ray.getPoint(t);
-        return List.of(p);
+        return null;
     }
 
+    /**
+     * implements the method of find Geo intersections for plane
+     * @param ray
+     * @return
+     */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D P0 = ray.getP0();
@@ -122,13 +100,13 @@ public class Plane extends Geometry {
         }
         Vector P0_Q0 = _q0.subtract(P0);
 
-        double mone = alignZero(_normal.dotProduct(P0_Q0));
+        double numerator = alignZero(_normal.dotProduct(P0_Q0));
 
 
-        if (isZero(mone)) {
+        if (isZero(numerator)) {
             return null;
         }
-        //mechane
+        //the denominator
         double nv = alignZero(_normal.dotProduct(v));
 
         //ray is lying in the plane axis
@@ -136,13 +114,13 @@ public class Plane extends Geometry {
             return null;
         }
 
-        double t = alignZero(mone / nv);
+        double t = alignZero(numerator / nv);
         if(t<=0){
             return null;
         }
         // Point3D p = P0.add(v.scale(t));
         Point3D P = ray.getPoint(t);
         return List.of(new GeoPoint(this,P));
-      //  return List.of(new GeoPoint(this,new Point3D()));
+      // return List.of(new GeoPoint(this,new Point3D()));
     }
 }

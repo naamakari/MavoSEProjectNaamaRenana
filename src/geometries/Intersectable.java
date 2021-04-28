@@ -3,6 +3,7 @@ package geometries;
 import primitives.Point3D;
 import primitives.Ray;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -10,20 +11,20 @@ import java.util.List;
 public interface Intersectable {
 
     /**
-     *
+     *class PDS- Contains a type consisting of a Geometry and a Point3D
      */
     public static class GeoPoint {
-        public Geometry geometry;
-        public Point3D point;
+        public Geometry _geometry;
+        public Point3D _point;
 
         /**
-         *
+         *constructor get 2 parameters
          * @param geometry
          * @param point
          */
         public GeoPoint(Geometry geometry, Point3D point) {
-            this.geometry = geometry;
-            this.point = point;
+            _geometry = geometry;
+            _point = point;
         }
 
         @Override
@@ -31,7 +32,7 @@ public interface Intersectable {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             GeoPoint geoPoint = (GeoPoint) o;
-            return geometry.equals(geoPoint.geometry) && point.equals(geoPoint.point);
+            return _geometry.equals(geoPoint._geometry) && _point.equals(geoPoint._point);
         }
     }
     /**
@@ -39,6 +40,10 @@ public interface Intersectable {
      * @param ray
      * @return
      */
-    List<Point3D> findIntersections(Ray ray);
+    default List<Point3D> findIntersections(Ray ray) {
+        var geoList = findGeoIntersections(ray);
+        return geoList == null ? null
+                : geoList.stream().map(gp -> gp._point).collect(Collectors.toList());
+    }
     List<GeoPoint> findGeoIntersections(Ray ray);
 }

@@ -1,9 +1,8 @@
 package primitives;
 
 import geometries.Intersectable.*;
-
+import geometries.Intersectable.GeoPoint;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * class that represent all the point that are at the side of the point that received
@@ -75,7 +74,7 @@ public class Ray {
     }
 
     /**
-     *
+     *function that get the closest points to ray
      * @param GeoPointList
      * @return
      */
@@ -84,10 +83,10 @@ public class Ray {
             return null;
         }
         GeoPoint minPoint= GeoPointList.get(0);
-        double minDistance=_p0.distance(GeoPointList.get(0).point);
+        double minDistance=_p0.distance(GeoPointList.get(0)._point);
 
         for (int i = 1; i < GeoPointList.size(); i++) {
-            double distance=_p0.distance(GeoPointList.get(i).point);
+            double distance=_p0.distance(GeoPointList.get(i)._point);
             if(distance<minDistance){
                 minDistance=distance;
                 minPoint=GeoPointList.get(i);
