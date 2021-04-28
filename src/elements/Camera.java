@@ -65,7 +65,7 @@ public class Camera {
 
 //Ratio (pixel width & height)
         double Ry = _height / nY;
-        double Rx = _height / nX;
+        double Rx = _width / nX;
 
         //Pixel[i,j] center
         double Yi = -(i - (nY - 1) / 2d) * Ry;
@@ -82,7 +82,7 @@ public class Camera {
             Pij = Pij.add(_vUp.scale(Yi));
         }
 
-        return new Ray(_p0, Pij.subtract(_p0));
+        return new Ray(_p0, Pij.subtract(_p0).normalize());
     }
 
     public Point3D getP0() {

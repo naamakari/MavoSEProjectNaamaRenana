@@ -59,9 +59,10 @@ public class Render {
             Ray ray;
             int Nx=_imageWriter.getNx();
             int Ny=_imageWriter.getNy();
-            for (int i = 0; i < Nx; i++) {
-                for (int j = 0; j < Ny; j++) {
+            for (int i = 0; i < Ny; i++) {
+                for (int j = 0; j < Nx; j++) {
                     ray=_camera.constructRayThroughPixel(Nx,Ny,j,i);
+
                     _imageWriter.writePixel(j,i,_rayTracerBase.traceRay(ray));
                 }
 

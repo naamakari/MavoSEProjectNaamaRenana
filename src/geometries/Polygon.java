@@ -107,58 +107,105 @@ public class Polygon extends Geometry {
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
 
-        if (plane.findIntersections(ray) == null) {
+        List<GeoPoint> result = plane.findGeoIntersections(ray);
+
+        if (result == null) {
+            return result;
+        }
+
+        Point3D P0 = ray.getP0();
+        Vector v = ray.getDir();
+
+        Point3D P1 = vertices.get(1);
+        Point3D P2 = vertices.get(0);
+
+        Vector v1 = P1.subtract(P0);
+        Vector v2 = P2.subtract(P0);
+
+        double sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+
+        if (isZero(sign)) {
             return null;
         }
 
-        //the point that we found at the plane
-        List<GeoPoint> listOfPoints = plane.findGeoIntersections(ray);
-        GeoPoint p = listOfPoints.get(0);
+        boolean positive = sign > 0;
 
-        //we will check if the point is inside the triangle
-        Vector v1 = vertices.get(0).subtract(ray.getP0());
-        Vector v2 = vertices.get(1).subtract(ray.getP0());
-        Vector n = v2.crossProduct(v1).normalize();
+        //iterate through all vertices of the polygon
+        for (int i = vertices.size() - 1; i > 0; --i) {
+            v1 = v2;
+            v2 = vertices.get(i).subtract(P0);
 
-        double result=alignZero((ray.getDir()).dotProduct(n));
-        if(isZero(result)){
-            return null;
-        }
-        boolean isPositive=result>0;
-
-        for (int i = 2;i<vertices.size();i++ ){
-            v1=v2;
-            v2=vertices.get(i).subtract(ray.getP0());
-
-            n= v2.crossProduct(v1).normalize();
-
-            result=alignZero((ray.getDir()).dotProduct(n));
-            if(isZero(result)){
+            sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+            if (isZero(sign)) {
                 return null;
             }
-            //if the sign of the points that we found are the same
-            if(isPositive!=result>0){
+
+            if (positive != (sign > 0)) {
                 return null;
             }
-
         }
 
-        //doing the last couple of the polygon
-        v1=v2;
-        v2=vertices.get(0).subtract(ray.getP0());
-
-        n= v2.crossProduct(v1).normalize();
-
-        result=alignZero((ray.getDir()).dotProduct(n));
-        //if there is no point
-        if(isZero(result)){
-            return null;
-        }
-
-        //if the sign of the points that we found are the same
-        if(isPositive!=result>0){
-            return null;
-        }
-        return List.of(new GeoPoint(this,listOfPoints.get(0)._point));
+        return List.of(new GeoPoint(this,result.get(0)._point));
     }
+
+
+
+
+
+
+
+//        if (plane.findIntersections(ray) == null) {
+//            return null;
+//        }
+//
+//        //the point that we found at the plane
+//        List<GeoPoint> listOfPoints = plane.findGeoIntersections(ray);
+//        GeoPoint p = listOfPoints.get(0);
+//
+//        //we will check if the point is inside the triangle
+//        Vector v1 = vertices.get(0).subtract(ray.getP0());
+//        Vector v2 = vertices.get(1).subtract(ray.getP0());
+//        Vector n = v2.crossProduct(v1).normalize();
+//
+//        double result=alignZero((ray.getDir()).dotProduct(n));
+//        if(isZero(result)){
+//            return null;
+//        }
+//        boolean isPositive=result>0;
+//
+//        for (int i = 2;i<vertices.size();i++ ){
+//            v1=v2;
+//            v2=vertices.get(i).subtract(ray.getP0());
+//
+//            n= v2.crossProduct(v1).normalize();
+//
+//            result=alignZero((ray.getDir()).dotProduct(n));
+//            if(isZero(result)){
+//                return null;
+//            }
+//            //if the sign of the points that we found are the same
+//            if(isPositive!=result>0){
+//                return null;
+//            }
+//
+//        }
+//
+//        //doing the last couple of the polygon
+//        v1=v2;
+//        v2=vertices.get(0).subtract(ray.getP0());
+//
+//        n= v2.crossProduct(v1).normalize();
+//
+//        result=alignZero((ray.getDir()).dotProduct(n));
+//        //if there is no point
+//        if(isZero(result)){
+//            return null;
+//        }
+//
+//        //if the sign of the points that we found are the same
+//        if(isPositive!=result>0){
+//            return null;
+//        }
+//        return List.of(new GeoPoint(this,listOfPoints.get(0)._point));
+//    }
 }
