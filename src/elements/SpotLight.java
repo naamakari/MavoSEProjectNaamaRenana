@@ -20,4 +20,20 @@ public class SpotLight extends PointLight{
         super(intensity, position, kC, kL, kQ);
         _direction = direction;
     }
+
+    /**
+     * function that calculate the intensity at the point where the point light arrived
+     * @param p the point of the shape the light arrived
+     * @return the intensity
+     */
+    @Override
+    public Color getIntensity(Point3D p) {
+
+
+        double d=.distance(p);
+
+    }
+
+
+
 }
