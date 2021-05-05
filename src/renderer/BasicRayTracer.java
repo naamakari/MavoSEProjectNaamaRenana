@@ -1,9 +1,8 @@
 package renderer;
 
+import elements.LightSource;
 import geometries.Intersectable.*;
-import primitives.Color;
-import primitives.Point3D;
-import primitives.Ray;
+import primitives.*;
 import scene.Scene;
 
 import java.util.List;
@@ -35,6 +34,28 @@ public class BasicRayTracer extends RayTracerBase{
         GeoPoint closestPoint=ray.getClosestGeoPoint(intersectionsList);
         return calColor(closestPoint);
     }
+
+    /**
+     * help function to do the sigma that exist at the Phong model
+     * @param lightSourceList
+     * @param geoPoint
+     * @return
+     */
+    public double sumPhong(List<LightSource> lightSourceList, GeoPoint geoPoint){
+        double sigma=0d;
+        double kd;
+        double ks;
+        Vector l;
+        Vector n;
+       // Color iL;
+
+        for (int i = 0; i < lightSourceList.size(); i++) {
+            kd=geoPoint._geometry.getMaterial().kD;
+            ks=geoPoint._geometry.getMaterial().kS;
+            l=lightSourceList.get(i).getL(geoPoint._point);
+            n=geoPoint._geometry.getNormal(geoPoint._point);
+        }
+}
 
     /**
      * function that calculate the color of point

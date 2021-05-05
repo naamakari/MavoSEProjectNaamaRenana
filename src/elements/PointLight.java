@@ -29,7 +29,6 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * function that calculate the intensity at the point where the point light arrived
-     *
      * @param p the point of the shape the light arrived
      * @return the intensity
      */
@@ -42,7 +41,6 @@ public class PointLight extends Light implements LightSource {
     /**
      * function to find the direction of the light that went to from the
      * point light to the shape
-     *
      * @param p
      * @return
      */
