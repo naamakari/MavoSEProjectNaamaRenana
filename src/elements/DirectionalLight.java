@@ -4,6 +4,9 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+/**
+ * class for directional light that inherits light class and implements light source interface
+ */
 public class DirectionalLight extends Light implements LightSource {
 private Vector _direction;
 
@@ -34,6 +37,6 @@ private Vector _direction;
      */
     @Override
     public Vector getL(Point3D p) {
-        return this._direction;
+        return _direction.normalized();
     }
 }

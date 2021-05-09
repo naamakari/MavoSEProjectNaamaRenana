@@ -68,11 +68,8 @@ public class Render {
 
             }
 
-
-
-
         } catch (MissingResourceException missingResourceException) {
-            throw new UnsupportedOperationException("the function is partly implements"+missingResourceException.getClassName());
+            throw new UnsupportedOperationException("the function is partly implements "+missingResourceException.getClassName());
             //throw new ExecutionControl.NotImplementedException("the function is partly implements"+missingResourceException.getClassName());
         }
     }

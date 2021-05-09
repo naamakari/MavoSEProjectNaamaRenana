@@ -27,6 +27,7 @@ public abstract class Geometry implements Intersectable{
         return _material;
     }
 
+    //setter for the material
     public Geometry setMaterial(Material material) {
         _material = material;
         return this;
@@ -48,4 +49,5 @@ public abstract class Geometry implements Intersectable{
      * @return
      */
    public abstract Vector getNormal(Point3D point);
+
 }

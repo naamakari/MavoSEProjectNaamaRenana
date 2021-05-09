@@ -7,6 +7,7 @@ import primitives.Color;
  */
 public class AmbientLight extends Light{
 
+
     /**
      * constructor for calculating the intensity by the father constructor
      * @param IA
@@ -14,6 +15,13 @@ public class AmbientLight extends Light{
      */
     public AmbientLight(Color IA,double KA) {
         super(IA.scale(KA));
+    }
+
+    /**
+     * default constructor
+     */
+    public AmbientLight() {
+        super(Color.BLACK);
     }
 
 }

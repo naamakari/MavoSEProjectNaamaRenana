@@ -4,27 +4,24 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+
+/**
+ * class for the point light that implements light source and inherits from light class
+ */
 public class PointLight extends Light implements LightSource {
     private Point3D _position;
-    private double _kC;
-    private double _kL;
-    private double _kQ;
+    private double _kC=1;
+    private double _kL=0;
+    private double _kQ=0;
 
     /**
      * constructor
-     *
      * @param intensity
      * @param position
-     * @param kC        Discount coefficients
-     * @param kL        Discount coefficients
-     * @param kQ        Discount coefficients
      */
-    public PointLight(Color intensity, Point3D position, double kC, double kL, double kQ) {
+    public PointLight(Color intensity, Point3D position) {
         super(intensity);
         _position = position;
-        _kC = kC;
-        _kL = kL;
-        _kQ = kQ;
     }
 
     /**
@@ -35,7 +32,7 @@ public class PointLight extends Light implements LightSource {
     @Override
     public Color getIntensity(Point3D p) {
         double d = _position.distance(p);
-        return (this.getIntensity()).scale(1d / _kC + _kL * d + _kQ * d * d);
+        return (this.getIntensity()).reduce( _kC + _kL * d + _kQ * d * d);
     }
 
     /**
@@ -46,6 +43,25 @@ public class PointLight extends Light implements LightSource {
      */
     @Override
     public Vector getL(Point3D p) {
-        return p.subtract(_position);
+        return _position.subtract(p).normalized();
+    }
+
+
+    //setter for the kc factor
+    public PointLight setKc(double kC) {
+        _kC = kC;
+        return this;
+    }
+
+    //setter for the kl factor
+    public PointLight setKl(double kL) {
+        _kL = kL;
+        return this;
+    }
+
+    //setter for the kq factor
+    public PointLight setKq(double kQ) {
+        _kQ = kQ;
+        return this;
     }
 }
