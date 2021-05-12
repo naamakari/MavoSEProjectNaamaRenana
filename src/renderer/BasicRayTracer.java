@@ -8,6 +8,7 @@ import scene.Scene;
 import java.util.List;
 
 import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /**
  * class that inheritor the abstract class RayTracerBase
@@ -38,29 +39,6 @@ public class BasicRayTracer extends RayTracerBase {
     }
 
     /**
-     * help function to do the sigma that exist at the Phong model
-     * @param lightSourceList
-     * @param geoPoint
-     * @return
-     */
-//    public double sumPhong(List<LightSource> lightSourceList, GeoPoint geoPoint) {
-//        double sigma = 0d;
-//        double kd;
-//        double ks;
-//        Vector l;
-//        Vector n;
-//        // Color iL;
-//
-//        for (int i = 0; i < lightSourceList.size(); i++) {
-//            kd = geoPoint._geometry.getMaterial()._kD;
-//            ks = geoPoint._geometry.getMaterial()._kS;
-//            l = lightSourceList.get(i).getL(geoPoint._point);
-//            n = geoPoint._geometry.getNormal(geoPoint._point);
-//        }
-//        return 0;
-//    }
-
-    /**
      * function that calculate the color of point
      * @param geoPoint the point we want to calculate the color for
      * @return the color the function found
@@ -80,10 +58,10 @@ public class BasicRayTracer extends RayTracerBase {
      * @return
      */
     private Color calcLocalEffects(GeoPoint intersection, Ray ray) {
-        Vector v = ray.getDir();
+        Vector v = ray.getDir();//the vector of the ray
         Vector n = intersection._geometry.getNormal(intersection._point);//get the normal of the geometry
         double nv = alignZero(n.dotProduct(v));
-        if (nv == 0) {//the vectors are orthogonal each other
+        if (isZero(nv)) {//the vectors are orthogonal each other
             return Color.BLACK;
         }
         Material material = intersection._geometry.getMaterial();
@@ -115,7 +93,7 @@ public class BasicRayTracer extends RayTracerBase {
      */
     private Color calcSpecular(double ks, Vector l, Vector n, Vector v, int nShininess, Color lightIntensity) {
         Vector r=l.subtract(n.scale(l.dotProduct(n)*2));
-        double minus_vr=v.dotProduct(r)*-1;
+        double minus_vr=alignZero(v.dotProduct(r)*-1);
         return lightIntensity.scale(ks*Math.pow(Math.max(0,minus_vr),nShininess));
     }
 
@@ -128,7 +106,7 @@ public class BasicRayTracer extends RayTracerBase {
      * @return
      */
     private Color calcDiffusive(double kd, Vector l, Vector n, Color lightIntensity) {
-        double factor=Math.abs(l.dotProduct(n));
+        double factor=alignZero(Math.abs(l.dotProduct(n)));
         return lightIntensity.scale(kd*factor);
     }
 }

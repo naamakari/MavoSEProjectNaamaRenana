@@ -24,7 +24,7 @@ public class SpotLight extends PointLight {
      */
     public SpotLight(Color intensity, Point3D position, Vector direction) {
         super(intensity, position);
-        _direction = direction;
+        _direction = direction.normalized();
     }
 
     /**
@@ -34,22 +34,11 @@ public class SpotLight extends PointLight {
      */
     @Override
     public Color getIntensity(Point3D p) {
-        double factor = alignZero(Math.max(0, _direction.dotProduct(getL(p))));
 
-        if (!isZero(factor)) {
-            return super.getIntensity(p).scale(factor);
-        }
-        throw new IllegalArgumentException("the angle equals to 0");
+        Color intensity=super.getIntensity(p);
+        double f=alignZero(_direction.dotProduct(getL(p)));
+        return intensity.scale(Math.max(0,f));
+
     }
 
-    /**
-     * function to find the direction of the light that went to from the
-     * spot light to the shape
-     * @param p
-     * @return
-     */
-    @Override
-    public Vector getL(Point3D p) {
-        return super.getL(p).normalized();
-    }
 }

@@ -4,6 +4,8 @@ import primitives.Color;
 import primitives.Point3D;
 import primitives.Vector;
 
+import static primitives.Util.alignZero;
+
 
 /**
  * class for the point light that implements light source and inherits from light class
@@ -31,7 +33,7 @@ public class PointLight extends Light implements LightSource {
      */
     @Override
     public Color getIntensity(Point3D p) {
-        double d = _position.distance(p);
+        double d =alignZero(_position.distance(p));
         return (this.getIntensity()).reduce( _kC + _kL * d + _kQ * d * d);
     }
 
@@ -43,7 +45,7 @@ public class PointLight extends Light implements LightSource {
      */
     @Override
     public Vector getL(Point3D p) {
-        return _position.subtract(p).normalized();
+        return p.subtract(_position).normalized();
     }
 
 
