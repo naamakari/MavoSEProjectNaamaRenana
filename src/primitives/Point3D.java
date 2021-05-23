@@ -12,9 +12,11 @@ public class Point3D {
 
     public final static Point3D ZERO = new Point3D(0d, 0d, 0d);
 
-    ///constructor
+    /**
+     *  constructor
+     */
+
     public Point3D(double x, double y, double z) {
-        //  this(new Coordinate(x),new Coordinate(y),new Coordinate(z));
 
         _x = new Coordinate(x);
         _y = new Coordinate(y);
@@ -25,14 +27,6 @@ public class Point3D {
     public double getX() {
         return _x._coord;
     }
-
-//    public double getY() {
-//        return _y._coord;
-//    }
-//
-//    public double getZ() {
-//        return _z._coord;
-//    }
 
     @Override
     public boolean equals(Object o) {

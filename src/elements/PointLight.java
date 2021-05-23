@@ -11,7 +11,7 @@ import static primitives.Util.alignZero;
  * class for the point light that implements light source and inherits from light class
  */
 public class PointLight extends Light implements LightSource {
-    private Point3D _position;
+    private final Point3D _position;
     private double _kC=1;
     private double _kL=0;
     private double _kQ=0;
@@ -48,20 +48,39 @@ public class PointLight extends Light implements LightSource {
         return p.subtract(_position).normalized();
     }
 
+    /**
+     * function to get the distance for the Point light after calculate
+     * @param point
+     * @return
+     */
+    @Override
+    public double getDistance(Point3D point) {
+        return _position.distance(point);
+    }
 
-    //setter for the kc factor
+/**
+ * setter for the kc factor
+ */
     public PointLight setKc(double kC) {
         _kC = kC;
         return this;
     }
 
-    //setter for the kl factor
+    /**
+     * setter for the kl factor
+     * @param kL
+     * @return
+     */
     public PointLight setKl(double kL) {
         _kL = kL;
         return this;
     }
 
-    //setter for the kq factor
+    /**
+     * setter for the kq factor
+     * @param kQ
+     * @return
+     */
     public PointLight setKq(double kQ) {
         _kQ = kQ;
         return this;

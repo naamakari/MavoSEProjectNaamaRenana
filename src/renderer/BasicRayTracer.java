@@ -14,6 +14,7 @@ import static primitives.Util.isZero;
  * class that inheritor the abstract class RayTracerBase
  */
 public class BasicRayTracer extends RayTracerBase {
+    private static final double DELTA = 0.1;//Accuracy for shifting First Rays
 
     /**
      * constructor, use the father
@@ -25,6 +26,7 @@ public class BasicRayTracer extends RayTracerBase {
 
     /**
      * implements of the abstract function
+     *
      * @param ray the ray that passed
      * @return the color
      */
@@ -35,11 +37,12 @@ public class BasicRayTracer extends RayTracerBase {
             return _scene._background;
         }
         GeoPoint closestPoint = ray.getClosestGeoPoint(intersectionsList);
-        return calColor(closestPoint,ray);
+        return calColor(closestPoint, ray);
     }
 
     /**
      * function that calculate the color of point
+     *
      * @param geoPoint the point we want to calculate the color for
      * @return the color the function found
      */
@@ -53,6 +56,7 @@ public class BasicRayTracer extends RayTracerBase {
 
     /**
      * A function that calculates the diffusion and speculator for each object
+     *
      * @param intersection
      * @param ray
      * @return
@@ -68,45 +72,64 @@ public class BasicRayTracer extends RayTracerBase {
         int nShininess = material._nShininess;
         double kd = material._kD;
         double ks = material._kS;
-        Color color =Color.BLACK;
+        Color color = Color.BLACK;
         for (LightSource lightSource : _scene._lights) {
             Vector l = lightSource.getL(intersection._point);//get the vector l of light source
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
-                Color lightIntensity = lightSource.getIntensity(intersection._point);//get the intensity of the geometry at the point
-                color = color.add(calcDiffusive(kd, l, n, lightIntensity),//calculates the diffusion
-                        calcSpecular(ks, l, n, v, nShininess, lightIntensity));//calculates the speculator
+                if (unshaded(lightSource,l,n, intersection)) {//checks the shadow
+                    Color lightIntensity = lightSource.getIntensity(intersection._point);//get the intensity of the geometry at the point
+                    color = color.add(calcDiffusive(kd, l, n, lightIntensity),//calculates the diffusion
+                            calcSpecular(ks, l, n, v, nShininess, lightIntensity));//calculates the speculator
+                }
             }
         }
         return color;
     }
 
     /**
+     * A function that checks if there is a shadow on a particular point
+     * @param light
+     * @param l
+     * @param n
+     * @param intersection
+     * @return
+     */
+    private boolean unshaded(LightSource light, Vector l, Vector n, GeoPoint intersection) {
+        Vector lightDirection = l.scale(-1); // from point to light source
+        Ray lightRay = new Ray(intersection._point, n, lightDirection);
+        List<GeoPoint> intersections = _scene._geometries
+                .findGeoIntersections(lightRay, light.getDistance(intersection._point));
+        return intersections == null;
+    }
+    /**
      * help function that calculates the speculator for each object
-     * @param ks The discount factor of the speculator
-     * @param l the vector from the light source
-     * @param n the normal of the object
-     * @param v the vector from the camera
-     * @param nShininess the value of the shininess of the material
+     *
+     * @param ks             The discount factor of the speculator
+     * @param l              the vector from the light source
+     * @param n              the normal of the object
+     * @param v              the vector from the camera
+     * @param nShininess     the value of the shininess of the material
      * @param lightIntensity the intensity of the light
      * @return
      */
     private Color calcSpecular(double ks, Vector l, Vector n, Vector v, int nShininess, Color lightIntensity) {
-        Vector r=l.subtract(n.scale(l.dotProduct(n)*2));
-        double minus_vr=alignZero(v.dotProduct(r)*-1);
-        return lightIntensity.scale(ks*Math.pow(Math.max(0,minus_vr),nShininess));
+        Vector r = l.subtract(n.scale(l.dotProduct(n) * 2));
+        double minus_vr = alignZero(v.dotProduct(r) * -1);
+        return lightIntensity.scale(ks * Math.pow(Math.max(0, minus_vr), nShininess));
     }
 
     /**
      * help function that calculates the diffusion for each object
-     * @param kd Diffusion coefficient of diffusion
-     * @param l the vector from the light source
-     * @param n the normal of the object
-     * @param lightIntensity  the intensity of the light
+     *
+     * @param kd             Diffusion coefficient of diffusion
+     * @param l              the vector from the light source
+     * @param n              the normal of the object
+     * @param lightIntensity the intensity of the light
      * @return
      */
     private Color calcDiffusive(double kd, Vector l, Vector n, Color lightIntensity) {
-        double factor=alignZero(Math.abs(l.dotProduct(n)));
-        return lightIntensity.scale(kd*factor);
+        double factor = alignZero(Math.abs(l.dotProduct(n)));
+        return lightIntensity.scale(kd * factor);
     }
 }

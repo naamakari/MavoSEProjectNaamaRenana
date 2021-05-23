@@ -60,16 +60,17 @@ public class Sphere extends Geometry {
     }
 
     /**
-     *implements the method of find Geo intersections for sphere
+     * implements the method of find Geo intersections for Sphere
      * @param ray
+     * @param maxDistance the distance from the light
      * @return
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
         if (P0.equals(_center)) {
-            return List.of(new GeoPoint(this,_center.add(v.scale(_radius))));
+            return List.of(new GeoPoint(this, _center.add(v.scale(_radius))));
         }
         Vector u = _center.subtract(P0);
 
@@ -85,32 +86,31 @@ public class Sphere extends Geometry {
 
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
-
         //in case the ray tangent to the sphere and it mean that th=0
         if (t1 == t2) {
             return null;
         }
 
         //2 intersections points
-        if (t1 > 0 && t2 > 0) {
+        if (t1 > 0 && t2 > 0 && alignZero(t1 - maxDistance) <= 0 && alignZero(t2 - maxDistance) <= 0) {
             Point3D p1 = P0.add(v.scale(t1));
             Point3D p2 = P0.add(v.scale(t2));
 
-            return List.of(new GeoPoint(this,p1),new GeoPoint(this, p2));
+            return List.of(new GeoPoint(this, p1), new GeoPoint(this, p2));
         }
         //one intersection point
-        if (t1 > 0) {
+        if (t1 > 0&&alignZero(t1 - maxDistance) <= 0) {
             // Point3D p1 = P0.add(v.scale(t1));
             //refactoring
             Point3D p1 = ray.getPoint(t1);
-            return List.of(new GeoPoint(this,p1));
+            return List.of(new GeoPoint(this, p1));
         }
         //one intersection point
-        if (t2 > 0) {
+        if (t2 > 0&&alignZero(t2 - maxDistance) <= 0) {
             //Point3D p2 = P0.add(v.scale(t2));
             //refactoring
             Point3D p2 = ray.getPoint(t2);
-            return List.of(new GeoPoint(this,p2));
+            return List.of(new GeoPoint(this, p2));
         }
         return null;
     }

@@ -22,4 +22,10 @@ public interface LightSource {
      */
     public Vector getL(Point3D p);
 
+    /**
+     * function to get the distance for the each light
+     * @param point the point of the intersect with the geometry
+     * @return the distance
+     */
+    double getDistance(Point3D point);
 }

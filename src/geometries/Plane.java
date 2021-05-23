@@ -17,7 +17,12 @@ public class Plane extends Geometry {
     final Point3D _q0;
     final Vector _normal;
 
-    //constructor of 3 points
+    /**
+     * constructor of 3 points
+     * @param p1
+     * @param p2
+     * @param p3
+     */
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
         _q0 = p1;
         //check direction of vectors
@@ -41,7 +46,6 @@ public class Plane extends Geometry {
     /**
      * constructor of point and vector
      * normal vector for plane, will normalized automatically
-     *
      * @param point
      * @param vector
      */
@@ -89,10 +93,11 @@ public class Plane extends Geometry {
     /**
      * implements the method of find Geo intersections for plane
      * @param ray
+     * @param maxDistance the distance from the light
      * @return
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
         if (_q0.equals(P0)) {
@@ -115,7 +120,7 @@ public class Plane extends Geometry {
         }
 
         double t = alignZero(numerator / nv);
-        if(t<=0){
+        if(t<=0||alignZero(t-maxDistance)>0){
             return null;
         }
         // Point3D p = P0.add(v.scale(t));

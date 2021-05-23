@@ -14,25 +14,34 @@ import java.util.MissingResourceException;
  */
 public class Render {
     ImageWriter _imageWriter;
-    Scene _scene;
     Camera _camera;
     RayTracerBase _rayTracerBase;
 
+    /**
+     *
+     * @param imageWriter
+     * @return
+     */
     public Render setImageWriter(ImageWriter imageWriter) {
         _imageWriter = imageWriter;
         return this;
     }
 
-    public Render setScene(Scene scene) {
-        _scene = scene;
-        return this;
-    }
-
+    /**
+     *
+     * @param camera
+     * @return
+     */
     public Render setCamera(Camera camera) {
         _camera = camera;
         return this;
     }
 
+    /**
+     *
+     * @param rayTracerBase
+     * @return
+     */
     public Render setRayTracerBase(RayTracerBase rayTracerBase) {
         _rayTracerBase = rayTracerBase;
         return this;
@@ -45,9 +54,6 @@ public class Render {
         try {
             if (_imageWriter == null) {
                 throw new MissingResourceException("image writer is empty", ImageWriter.class.getName(), "");
-            }
-            if (_scene == null) {
-                throw new MissingResourceException("scene is empty", Scene.class.getName(), "");
             }
             if (_camera == null) {
                 throw new MissingResourceException("camera is empty", Camera.class.getName(), "");

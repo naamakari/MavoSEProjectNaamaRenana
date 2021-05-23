@@ -39,4 +39,14 @@ private Vector _direction;
     public Vector getL(Point3D p) {
         return _direction.normalized();
     }
+
+    /**
+     * function to get the distance for the directional light (infinity)
+     * @param point
+     * @return
+     */
+    @Override
+    public double getDistance(Point3D point) {
+        return Double.POSITIVE_INFINITY;
+    }
 }

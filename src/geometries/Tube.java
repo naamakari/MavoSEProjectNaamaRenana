@@ -74,8 +74,14 @@ public class Tube extends Geometry{
         return null;
     }
 
+    /**
+     * (not) implements the method of find Geo intersections for tube
+     * @param ray
+     * @param maxDistance the distance from the light
+     * @return
+     */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
         return null;
     }
 }

@@ -20,13 +20,19 @@ public class Geometries implements Intersectable {
         _listGeometries = new LinkedList<Intersectable>();
     }
 
+    /**
+     * parameter constructor
+     * @param geometries
+     */
     public Geometries(Intersectable... geometries) {
-      // _listGeometries = new LinkedList<>();
-       //for (int i = 0; geometries.length > i; i++) {
             add(geometries);
 
     }
 
+    /**
+     * function for add geometry to the list of the geometries
+     * @param geometries
+     */
     public void add(Intersectable... geometries) {
         for (int i = 0; geometries.length > i; i++) {
             _listGeometries.add(geometries[i]);
@@ -58,15 +64,16 @@ public class Geometries implements Intersectable {
     }
 
     /**
-     * function that return all the gePpoints that intersected the current geometry
+     * function that return all the gePoints that intersected the current geometry
      * @param ray
-     * @return list of a geoPoints3D
+     * @param maxDistance
+     * @return  list of a geoPoints3D
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
         List<GeoPoint> intersections = null;
         for (Intersectable geometry : _listGeometries) {
-            List<GeoPoint> geoIntersections = geometry.findGeoIntersections(ray);
+            List<GeoPoint> geoIntersections = geometry.findGeoIntersections(ray,maxDistance);
             //if the list is not empty
             if (geoIntersections != null) {
                 //if it is the first time to add intersection
