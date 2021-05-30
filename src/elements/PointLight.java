@@ -12,12 +12,13 @@ import static primitives.Util.alignZero;
  */
 public class PointLight extends Light implements LightSource {
     private final Point3D _position;
-    private double _kC=1;
-    private double _kL=0;
-    private double _kQ=0;
+    private double _kC = 1d;
+    private double _kL = 0d;
+    private double _kQ = 0d;
 
     /**
      * constructor
+     *
      * @param intensity
      * @param position
      */
@@ -28,18 +29,20 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * function that calculate the intensity at the point where the point light arrived
+     *
      * @param p the point of the shape the light arrived
      * @return the intensity
      */
     @Override
     public Color getIntensity(Point3D p) {
-        double d =alignZero(_position.distance(p));
-        return (this.getIntensity()).reduce( _kC + _kL * d + _kQ * d * d);
+        double d = alignZero(_position.distance(p));
+        return _intensity.scale(1d / (_kC + _kL * d + _kQ * d * d));
     }
 
     /**
      * function to find the direction of the light that went to from the
      * point light to the shape
+     *
      * @param p
      * @return
      */
@@ -50,6 +53,7 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * function to get the distance for the Point light after calculate
+     *
      * @param point
      * @return
      */
@@ -58,9 +62,9 @@ public class PointLight extends Light implements LightSource {
         return _position.distance(point);
     }
 
-/**
- * setter for the kc factor
- */
+    /**
+     * setter for the kc factor
+     */
     public PointLight setKc(double kC) {
         _kC = kC;
         return this;
@@ -68,6 +72,7 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for the kl factor
+     *
      * @param kL
      * @return
      */
@@ -78,6 +83,7 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for the kq factor
+     *
      * @param kQ
      * @return
      */

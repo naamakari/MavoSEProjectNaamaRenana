@@ -29,34 +29,4 @@ public class Triangle extends Polygon {
                 '}';
     }
 
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-//        //the point that we found at the plane
-//        List<Point3D> list = plane.findIntersections(ray);
-//        if(list==null) {
-//            return null;
-//        }
-//
-//        Point3D p = list.get(0);
-//
-//        //we will check if the point is inside the triangle
-//        Vector v1 = vertices.get(0).subtract(ray.getP0());
-//        Vector v2 = vertices.get(1).subtract(ray.getP0());
-//        Vector v3 = vertices.get(2).subtract(ray.getP0());
-//
-//        Vector n1 = v2.crossProduct(v1).normalize();
-//        Vector n2 = v3.crossProduct(v2).normalize();
-//        Vector n3 = v1.crossProduct(v3).normalize();
-//
-//        double res1 = ray.getDir().dotProduct(n1);
-//        double res2 = ray.getDir().dotProduct(n2);
-//        double res3 = ray.getDir().dotProduct(n3);
-//
-////check the sign of the projection
-//        if ((res1 > 0 && res2 > 0 && res3 > 0) || (res1 < 0 && res2 < 0 && res3 < 0)) {
-//            return list;
-//        }
-        return null;
-    }
-
 }

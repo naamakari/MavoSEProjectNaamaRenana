@@ -89,16 +89,6 @@ public class Polygon extends Geometry {
         return plane.getNormal(null);
     }
 
-    /**
-     * function that find the intersections of the ray with the polygon
-     *
-     * @param ray
-     * @return list of point 3D
-     */
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        return null;
-    }
 
     /**
      * implements the method of find Geo intersections for polygon

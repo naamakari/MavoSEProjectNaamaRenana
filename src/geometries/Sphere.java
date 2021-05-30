@@ -13,10 +13,14 @@ import static primitives.Util.alignZero;
  * contain point of the center of the sphere and the radius
  */
 public class Sphere extends Geometry {
-    Point3D _center;
-    double _radius;
+   private final Point3D _center;
+   private final double _radius;
 
-    //constructor
+    /**
+     * constructor
+     * @param center
+     * @param radius
+     */
     public Sphere(Point3D center, double radius) {
         _center = center;
         _radius = radius;
@@ -54,10 +58,7 @@ public class Sphere extends Geometry {
         return O_P.normalize();
     }
 
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        return null;
-    }
+
 
     /**
      * implements the method of find Geo intersections for Sphere

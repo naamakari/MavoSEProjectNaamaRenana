@@ -81,16 +81,6 @@ public class Plane extends Geometry {
     }
 
     /**
-     * function that find the intersections of the ray with the plane
-     * @param ray
-     * @return
-     */
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        return null;
-    }
-
-    /**
      * implements the method of find Geo intersections for plane
      * @param ray
      * @param maxDistance the distance from the light

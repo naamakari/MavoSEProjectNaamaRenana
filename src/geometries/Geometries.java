@@ -39,29 +39,6 @@ public class Geometries implements Intersectable {
         }
     }
 
-    /**
-     * function that return all the points that intersected the current geometry
-     * @param ray
-     * @return list of a Point3Ds
-     */
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        List<Point3D> intersections = null;
-        for (int i = 0; _listGeometries.size() > i; i++) {
-            List<Point3D> geometryPoints = _listGeometries.get(i).findIntersections(ray);
-            //if the list is not empty
-            if (geometryPoints != null) {
-                //if it is the first time to add intersection
-                if (intersections == null) {
-                    intersections = new LinkedList<>();
-                }
-                intersections.addAll(geometryPoints);
-            }
-        }
-        //if the list is empty the list return null
-
-        return intersections;
-    }
 
     /**
      * function that return all the gePoints that intersected the current geometry
