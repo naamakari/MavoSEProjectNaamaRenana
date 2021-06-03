@@ -171,4 +171,7 @@ public class ShadowTests {
         render.writeToImage();
     }
 
+
+
+
 }
