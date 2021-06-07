@@ -62,18 +62,18 @@ public class Render {
             }
 
             Ray ray;
-            Color c = new Color(0, 0, 0);
             int Nx=_imageWriter.getNx();
             int Ny=_imageWriter.getNy();
             for (int i = 0; i < Ny; i++) {
                 for (int j = 0; j < Nx; j++) {
+                    Color colAverage = new Color(0, 0, 0);
                     for (int ii = 0; ii < numberOfSamples; ii++) {
                         for (int jj = 0; jj < numberOfSamples; jj++) {
                             ray = _camera.constructRayThroughRandomPixel(Nx, Ny, j, i,numberOfSamples,ii,jj);
-                            c=c.add(_rayTracerBase.traceRay(ray));
+                            colAverage=colAverage.add(_rayTracerBase.traceRay(ray));
                         }
                     }
-                    _imageWriter.writePixel(j, i,c.reduce(numberOfSamples*numberOfSamples));
+                    _imageWriter.writePixel(i, j,colAverage.reduce(numberOfSamples*numberOfSamples));
                 }
 
             }
