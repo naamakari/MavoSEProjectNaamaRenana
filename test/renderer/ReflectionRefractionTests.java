@@ -140,11 +140,11 @@ public class ReflectionRefractionTests {
 //                new Sphere(new Point3D(40, -40, 50), 23).setEmission(new Color(200, 200, 200))
 //                        .setMaterial(new Material().setkT(0.8).setkR(0).setKd(0.3).setKs(0.3).setnShininess(30)),
                 new Triangle(new Point3D(30, 20, 30), new Point3D(-5, 35, 30), new Point3D(-5, 5, 30))
-                        .setEmission(new Color(85,122,4)).setMaterial(new Material().setkT(0).setnShininess(30).setkR(0.1)),
+                        .setEmission(new Color(85, 122, 4)).setMaterial(new Material().setkT(0).setnShininess(30).setkR(0.1)),
                 new Triangle(new Point3D(25, -20, 70), new Point3D(-10, -5, 70), new Point3D(-10, -35, 70))
-                        .setEmission(new Color(85,122,4)).setMaterial(new Material().setkT(0).setnShininess(30).setkR(0.1)),
+                        .setEmission(new Color(85, 122, 4)).setMaterial(new Material().setkT(0).setnShininess(30).setkR(0.1)),
                 new Triangle(new Point3D(30, -40, 200), new Point3D(-25, -20, 200), new Point3D(-25, -75, 200))
-                        .setEmission(new Color(85,122,4)).setMaterial(new Material().setkT(0).setnShininess(30).setkR(0.1)));
+                        .setEmission(new Color(85, 122, 4)).setMaterial(new Material().setkT(0).setnShininess(30).setkR(0.1)));
 //                new Triangle(new Point3D(-150, -150, -115), new Point3D(150, -150, -135), new Point3D(75, 75, -150)) //
 //                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)), //
 //                new Triangle(new Point3D(-150, -150, -115), new Point3D(-70, 70, -140), new Point3D(75, 75, -150)) //
@@ -160,27 +160,70 @@ public class ReflectionRefractionTests {
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
-        render.renderImage();
+        render.renderImage(9);
         render.writeToImage();
     }
 
     @Test
-    public void MP1(){
+    public void MP1() {
         Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(1, 0, 0)) //
                 .setViewPlaneSize(200, 200).setDistance(1000);
         scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.WHITE), 0.15));
         scene._geometries.add( //
                 new Triangle(new Point3D(-20, -300, 0), new Point3D(50, 50, 0), new Point3D(-200, 0, 100)) //
-                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30,187,49)), //
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30, 187, 49)), //
                 new Triangle(new Point3D(50, 50, 0), new Point3D(-200, 0, 100), new Point3D(-135, 250, 0)) //
-                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30,187,49)),
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30, 187, 49)),
                 new Triangle(new Point3D(57, 48, 0), new Point3D(32, -37, 0), new Point3D(50, 50, 0)) //
-                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30,187,49)),
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30, 187, 49)),
                 new Triangle(new Point3D(57, 48, 0), new Point3D(32, -37, 0), new Point3D(40, -40, 0)) //
-                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30,187,49)));
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setnShininess(60)).setEmission(new Color(30, 187, 49)));
 
-       // scene._lights.add(new SpotLight(new Color(255, 255, 255), new Point3D(-150, -150, 1000),new Vector(1,1,-1)));
+        // scene._lights.add(new SpotLight(new Color(255, 255, 255), new Point3D(-150, -150, 1000),new Vector(1,1,-1)));
         ImageWriter imageWriter = new ImageWriter("MP1", 600, 600);
+        Render render = new Render() //
+                .setImageWriter(imageWriter) //
+                .setCamera(camera) //
+                .setRayTracerBase(new BasicRayTracer(scene));
+        render.renderImage();
+        render.writeToImage();
+    }
+
+    @Test
+    public void Mp1() {
+        Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+                .setViewPlaneSize(200, 200).setDistance(1000);
+        scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));
+        scene._geometries.add(
+                new Plane(new Point3D(0, 0, 0), new Point3D(50, 50, 0), new Point3D(50, -50, 0))
+                        .setEmission(new Color(50, 255, 159)),
+                new Plane(new Point3D(50, -50, 0), new Point3D(100, -50, 0), new Point3D(100, -70, 100))
+                        .setEmission(new Color(255, 156, 151)),
+                new Plane(new Point3D(50, 50, 0), new Point3D(100, 50, 0), new Point3D(100, 70, 100))
+                        .setEmission(new Color(171, 253, 255)),
+                new Plane(new Point3D(50, -50, 0), new Point3D(50, -100, 0), new Point3D(70, -100, 100))
+                        .setEmission(new Color(234, 255, 145)),
+                new Plane(new Point3D(-50, 50, 0), new Point3D(-50, 100, 0), new Point3D(-70, 100, 100))
+                        .setEmission(new Color(255, 211, 248)),
+                //the small sphere
+                new Sphere(new Point3D(-20, -41, 50), 20).setEmission(new Color(255, 255, 255))
+                        .setMaterial(new Material().setKd(0.8).setkT(0).setkR(0.1).setKs(1).setnShininess(50)),
+                //the middle sphere
+                new Sphere(new Point3D(20, -50, 50), 10).setEmission(new Color(193, 255, 171))
+                        .setMaterial(new Material().setKd(0.8).setkT(0).setkR(0.1).setKs(1).setnShininess(50)),
+               //the big sphere
+                new Sphere(new Point3D(0, -27, 20), 27).setEmission(new Color(201, 148, 255))
+                        .setMaterial(new Material().setKd(0.8).setkT(0).setkR(0.1).setKs(1).setnShininess(50)));
+                //the up sphere
+               // new Sphere(new Point3D(0, 68, 100), 10).setEmission(new Color(255, 255, 255))
+                 //       .setMaterial(new Material().setKd(0.1).setkT(0.8).setkR(0.5).setKs(0.9).setnShininess(50)));
+
+       // scene._lights.add(new PointLight(new Color(0, 255, 255), new Point3D(0, 72, 100)).
+         //       setKl(0.01).setKq(0.002));
+                scene._lights.add( //
+                        new SpotLight(new Color(1000, 600, 0), new Point3D(-99, -99, 500), new Vector(-1, -1, -2)) //
+                                .setKl(0.0004).setKq(0.0000006));
+        ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //

@@ -1,5 +1,6 @@
 package elements;
 
+import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -54,6 +55,30 @@ public class Camera {
     }
 
     /**
+     * A function that builds a ray through a pixel-particle, the function is summed inside
+     * a nested loop that goes into all the pixel-particles according to the number of samples we determined
+     *
+     * @param nX              width of the row, amount of columns
+     * @param nY              width of the column, amount of rows
+     * @param j               y axis
+     * @param i               x axis
+     * @param numberOfSamples the number of the samples we determined
+     * @param ii              the position within the pixel
+     * @param jj              the position within the pixel
+     * @return
+     */
+    public Ray constructRayThroughRandomPixel(int nX, int nY, int j, int i, int numberOfSamples, int ii, int jj) {
+        double x;
+        double y;
+        x = (i + (ii + Math.random()) / numberOfSamples) / nX;
+        y = (j + (jj + Math.random()) / numberOfSamples) / nY;
+        Point3D pXY = new Point3D(x, y, 0d);
+        Ray ray = new Ray(_p0, pXY.subtract(_p0));
+        return ray;
+    }
+
+
+    /**
      * function for finding the ray that pass at the center of the pixel
      *
      * @param nX width of the row, amount of columns
@@ -66,17 +91,25 @@ public class Camera {
 
         Point3D Pc = _p0.add(_vTo.scale(_distance));//image center
 
-//Ratio (pixel width & height)
+        /**
+         * Ratio (pixel width & height)
+         */
+
         double Ry = _height / nY;
         double Rx = _width / nX;
 
-        //Pixel[i,j] center
+        /**
+         * Pixel[i,j] center
+         */
+
         double Yi = -(i - (nY - 1) / 2d) * Ry;
         double Xj = (j - (nX - 1) / 2d) * Rx;
 
         Point3D Pij = Pc;
+        /**
+         *checks numbers does not make zero vector
+         */
 
-//checks numbers does not make zero vector
         if (!isZero(Xj)) {
             Pij = Pij.add(_vRight.scale(Xj));
         }
