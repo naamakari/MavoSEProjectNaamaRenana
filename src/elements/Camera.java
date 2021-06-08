@@ -68,13 +68,28 @@ public class Camera {
      * @return
      */
     public Ray constructRayThroughRandomPixel(int nX, int nY, int j, int i, int numberOfSamples, int ii, int jj) {
+        Point3D Pc = _p0.add(_vTo.scale(_distance));//image center
+
         double x;
         double y;
-        x = (i + (ii + Math.random()) / numberOfSamples) / nX;
-        y = (j + (jj + Math.random()) / numberOfSamples) / nY;
-        Point3D pXY = new Point3D(x, y, 0d);
-        Ray ray = new Ray(_p0, pXY.subtract(_p0));
-        return ray;
+        x = (i + (ii + Math.random()) / numberOfSamples) / _width;
+        y = (j + (jj + Math.random()) / numberOfSamples) / _height;
+
+
+        Point3D pXY = Pc;
+        /**
+         *checks numbers does not make zero vector
+         */
+
+        if (!isZero(x)) {
+            pXY = pXY.add(_vRight.scale(x));
+        }
+
+        if (!isZero(y)) {
+            pXY = pXY.add(_vUp.scale(y));
+        }
+
+        return new Ray(_p0, pXY.subtract(_p0).normalize());
     }
 
 

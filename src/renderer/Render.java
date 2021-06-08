@@ -69,8 +69,8 @@ public class Render {
                     Color colAverage = new Color(0, 0, 0);
                     for (int ii = 0; ii < numberOfSamples; ii++) {
                         for (int jj = 0; jj < numberOfSamples; jj++) {
-                            ray = _camera.constructRayThroughRandomPixel(Nx, Ny, j, i,numberOfSamples,ii,jj);
-                            colAverage=colAverage.add(_rayTracerBase.traceRay(ray));
+                            ray = _camera.constructRayThroughRandomPixel(Nx,Ny,j,i,numberOfSamples,ii,jj);
+                        colAverage=colAverage.add(_rayTracerBase.traceRay(ray));
                         }
                     }
                     _imageWriter.writePixel(i, j,colAverage.reduce(numberOfSamples*numberOfSamples));

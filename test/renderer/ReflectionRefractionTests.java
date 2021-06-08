@@ -199,15 +199,16 @@ public class ReflectionRefractionTests {
         scene.setAmbientLight(new AmbientLight(new Color(java.awt.Color.BLACK), 0.15));
         scene._geometries.add(
                 new Plane(new Point3D(0, 0, 0), new Point3D(50, 50, 0), new Point3D(50, -50, 0))
-                        .setEmission(new Color(50, 255, 159)),
+                        .setEmission(new Color(255, 250, 221)).setMaterial(new Material().setKs(0.8).setnShininess(60)),
                 new Plane(new Point3D(50, -50, 0), new Point3D(100, -50, 0), new Point3D(100, -70, 100))
-                        .setEmission(new Color(255, 156, 151)),
+                        .setEmission(new Color(255, 250, 221)).setMaterial(new Material().setKs(0.8).setnShininess(60)),
                 new Plane(new Point3D(50, 50, 0), new Point3D(100, 50, 0), new Point3D(100, 70, 100))
-                        .setEmission(new Color(171, 253, 255)),
+                        .setEmission(new Color(255, 250, 221)).setMaterial(new Material().setKs(0.8).setnShininess(60)),
                 new Plane(new Point3D(50, -50, 0), new Point3D(50, -100, 0), new Point3D(70, -100, 100))
                         .setEmission(new Color(234, 255, 145)),
                 new Plane(new Point3D(-50, 50, 0), new Point3D(-50, 100, 0), new Point3D(-70, 100, 100))
                         .setEmission(new Color(255, 211, 248)),
+
                 //the small sphere
                 new Sphere(new Point3D(-20, -41, 50), 20).setEmission(new Color(255, 255, 255))
                         .setMaterial(new Material().setKd(0.8).setkT(0).setkR(0.1).setKs(1).setnShininess(50)),
@@ -221,11 +222,15 @@ public class ReflectionRefractionTests {
                // new Sphere(new Point3D(0, 68, 100), 10).setEmission(new Color(255, 255, 255))
                  //       .setMaterial(new Material().setKd(0.1).setkT(0.8).setkR(0.5).setKs(0.9).setnShininess(50)));
 
-       // scene._lights.add(new PointLight(new Color(0, 255, 255), new Point3D(0, 72, 100)).
-         //       setKl(0.01).setKq(0.002));
-                scene._lights.add( //
-                        new SpotLight(new Color(1000, 600, 0), new Point3D(-99, -99, 500), new Vector(-1, -1, -2)) //
-                                .setKl(0.0004).setKq(0.0000006));
+       //scene._lights.add(new PointLight(new Color(0, 255, 255), new Point3D(0, 72, 100)).
+                //setKl(0.01).setKq(0.002));
+                //scene._lights.add( //
+                        //new SpotLight(new Color(1000, 600, 0), new Point3D(-99, -99, 500), new Vector(-1, -1, -2)) //
+                               // .setKl(0.0004).setKq(0.0000006));
+        scene._lights.add( //
+                new SpotLight(new Color(700, 400, 400), new Point3D(40, 40, 800), new Vector(-1, -1, -4)) //
+                        .setKl(4E-4).setKq(2E-5));
+
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render() //
                 .setImageWriter(imageWriter) //
