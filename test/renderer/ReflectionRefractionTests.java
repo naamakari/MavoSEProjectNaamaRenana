@@ -206,19 +206,19 @@ public class ReflectionRefractionTests {
         scene._geometries.add(
                 //behind
                 new Plane(new Point3D(0, 0, 0), new Point3D(50, 50, 0), new Point3D(50, -50, 0))
-                      .setEmission(new Color(200, 50, 0)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.5).setkR(0).setkT(0)),
+                      .setEmission(new Color(213, 215, 170)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.5).setkR(0).setkT(0)),
               //down
                 new Plane(new Point3D(50, -50, 0), new Point3D(100, -50, 0), new Point3D(100, -70, 100))
-                        .setEmission(new Color(0, 200, 50)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.5).setkR(0).setkT(0)),
+                        .setEmission(new Color(213, 215, 170)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.5).setkR(0).setkT(0)),
                //up
                 new Plane(new Point3D(50, 50, 0), new Point3D(100, 50, 0), new Point3D(100, 70, 100))
-                        .setEmission(new Color(50, 0, 200)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.5).setkR(0).setkT(0)),
+                        .setEmission(new Color(213, 215, 170)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.5).setkR(0).setkT(0)),
                 //right
                 new Plane(new Point3D(50, -50, 0), new Point3D(50, -100, 0), new Point3D(70, -100, 100))
-                        .setEmission(new Color(200, 200, 0)).setMaterial(new Material().setKs(0).setnShininess(100).setKd(0.3).setkR(0).setkT(0)),
+                        .setEmission(new Color(28, 130, 38)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.3).setkR(0).setkT(0)),
                 //left
                 new Plane(new Point3D(-50, 50, 0), new Point3D(-50, 100, 0), new Point3D(-70, 100, 100))
-                        .setEmission(new Color(0, 200, 200)).setMaterial(new Material().setKs(0).setnShininess(100).setKd(0.8).setkR(0).setkT(0)),
+                        .setEmission(new Color(200, 50, 0)).setMaterial(new Material().setKs(0.3).setnShininess(200).setKd(0.8).setkR(0).setkT(0)),
 
                //the big sphere
                 new Sphere(new Point3D(0, -31, 20), 23).setEmission(new Color(201, 148, 255))
@@ -272,7 +272,7 @@ public class ReflectionRefractionTests {
 //                new SpotLight(new Color(255, 164, 48), new Point3D(0, 60, 60), new Vector(0, -1, 0)) //
 //                        .setKl(4E-4).setKq(2E-5));
 
-       scene._lights.add(new SpotLight(new Color(255, 0, 0), new Point3D(0, 64, 70), new Vector(0, -5, 1)));
+       scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.03));
      //   scene._lights.add(new SpotLight(new Color(255, 164, 48), new Point3D(-5, 64, 70), new Vector(0, -5, 1)).setKl(0.08).setKc(0.08));
        // scene._lights.add(new SpotLight(new Color(255, 164, 48), new Point3D(-5, 68, 90), new Vector(0, -1, 0)).setKl(0.08).setKc(0.08));
         //scene._lights.add(new SpotLight(new Color(255, 164, 48), new Point3D(10, 68, 30), new Vector(-5, 0, 1)).setKl(0.08).setKc(0.08));
