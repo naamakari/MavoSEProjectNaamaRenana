@@ -69,11 +69,12 @@ public class Render {
                     Color colAverage = new Color(0, 0, 0);
                     for (int ii = 0; ii < numberOfSamples; ii++) {
                         for (int jj = 0; jj < numberOfSamples; jj++) {
-                            ray = _camera.constructRayThroughRandomPixel(Nx,Ny,j,i,numberOfSamples,ii,jj);
+                           // ray = _camera.constructRayThroughRandomPixel(Nx,Ny,j,i,numberOfSamples,ii,jj);
+                           ray = _camera.constructRayThroughPixel(Nx*numberOfSamples,Ny*numberOfSamples,j*numberOfSamples+jj,i*numberOfSamples+ii);
                         colAverage=colAverage.add(_rayTracerBase.traceRay(ray));
                         }
                     }
-                    _imageWriter.writePixel(i, j,colAverage.reduce(numberOfSamples*numberOfSamples));
+                    _imageWriter.writePixel(j, i,colAverage.reduce(numberOfSamples*numberOfSamples));
                 }
 
             }
