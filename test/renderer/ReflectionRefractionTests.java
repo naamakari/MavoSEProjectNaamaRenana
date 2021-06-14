@@ -256,12 +256,13 @@ public class ReflectionRefractionTests {
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
 
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
-        Render render = new Render() //
+        Render render = new Render()
+                .setMultithreading(2)//
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
         //Uses improvement of super sampling with parameter = 9
-        render.renderImage();
+        render.renderImage(9);
         render.writeToImage();
     }
 

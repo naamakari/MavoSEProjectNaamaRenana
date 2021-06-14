@@ -168,7 +168,6 @@ public class Render {
     /**
      * Renderer class is responsible for generating pixel color map from a graphic
      * scene, using ImageWriter class
-     *
      * @author Dan
      *
      */
