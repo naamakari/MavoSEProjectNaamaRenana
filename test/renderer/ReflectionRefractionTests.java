@@ -257,12 +257,12 @@ public class ReflectionRefractionTests {
 
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render()
-                .setMultithreading(2)//
+                .setMultithreading(3)//
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
         //Uses improvement of super sampling with parameter = 9
-        render.renderImage(9);
+        render.renderImage();
         render.writeToImage();
     }
 

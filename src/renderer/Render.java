@@ -93,7 +93,7 @@ public class Render {
                 }
             }
             else
-                renderImageThreaded();
+                renderImageThreaded(numberOfSamples);
         } catch (MissingResourceException missingResourceException) {
             throw new UnsupportedOperationException("the function is partly implements "+missingResourceException.getClassName());
             //throw new ExecutionControl.NotImplementedException("the function is partly implements"+missingResourceException.getClassName());
@@ -127,7 +127,7 @@ public class Render {
                 }
             }
             else
-                renderImageThreaded();
+                renderImageThreaded(1);
         } catch (MissingResourceException missingResourceException) {
             throw new UnsupportedOperationException("the function is partly implements "+missingResourceException.getClassName());
             //throw new ExecutionControl.NotImplementedException("the function is partly implements"+missingResourceException.getClassName());
@@ -328,17 +328,23 @@ public class Render {
          * @param col pixel's column number (pixel index in row)
          * @param row pixel's row number (pixel index in column)
          */
-        private void castRay(int nX, int nY, int col, int row) {
-            Ray ray = _camera.constructRayThroughPixel(nX, nY, col, row);
-            Color color = _rayTracerBase.traceRay(ray);
-            _imageWriter.writePixel(col, row, color);
+        private void castRay(int nX, int nY, int col, int row,int samples) {
+            Color colAverage = new Color(0, 0, 0);
+            for (int ii = 0; ii < samples; ii++) {
+                for (int jj = 0; jj < samples; jj++) {
+                    // ray = _camera.constructRayThroughRandomPixel(Nx,Ny,j,i,numberOfSamples,ii,jj);
+                   Ray ray = _camera.constructRayThroughPixel(nX * samples, nY * samples, col * samples + jj, row * samples + ii);
+                    colAverage = colAverage.add(_rayTracerBase.traceRay(ray));
+                }
+            }
+            _imageWriter.writePixel(col, row, colAverage.reduce(samples*samples));
         }
 
         /**
          * This function renders image's pixel color map from the scene included with
          * the Renderer object - with multi-threading
          */
-        private void renderImageThreaded() {
+        private void renderImageThreaded(int samples) {
             final int nX = _imageWriter.getNx();
             final int nY = _imageWriter.getNy();
             final Pixel thePixel = new Pixel(nY, nX);
@@ -348,7 +354,7 @@ public class Render {
                 threads[i] = new Thread(() -> {
                     Pixel pixel = new Pixel();
                     while (thePixel.nextPixel(pixel))
-                        castRay(nX, nY, pixel.col, pixel.row);
+                        castRay(nX, nY, pixel.col, pixel.row,samples);
                 });
             }
             // Start threads
