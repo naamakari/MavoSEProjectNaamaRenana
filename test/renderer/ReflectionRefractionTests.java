@@ -249,7 +249,6 @@ public class ReflectionRefractionTests {
                 //DOWN
                 new Polygon(M,O,L,N).setEmission(new Color(94,199,92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)));
 
-
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.03));
       //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
