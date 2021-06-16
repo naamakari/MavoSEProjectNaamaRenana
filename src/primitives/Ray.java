@@ -14,8 +14,8 @@ public class Ray {
 
     /**
      * constructor of 2 parameters
-     * @param p0
-     * @param dir
+     * @param p0 start point of the ray
+     * @param dir the vector direction of the ray
      */
 
     public Ray(Point3D p0, Vector dir) {
@@ -25,9 +25,9 @@ public class Ray {
 
     /**
      * constructor of 3 parameters
-     * @param point
-     * @param direction
-     * @param n
+     * @param point start point of the ray
+     * @param direction the vector direction of the ray
+     * @param n the normal of the ray
      */
     public Ray(Point3D point, Vector direction, Vector n) {
         Vector delta = n.scale(n.dotProduct(direction) > 0 ? DELTA : -DELTA);
@@ -37,7 +37,6 @@ public class Ray {
 
     /**
      * getter for origin of the Ray
-     *
      * @return p0
      */
     public Point3D getP0() {
@@ -46,7 +45,6 @@ public class Ray {
 
     /**
      * getter for direction vector of the Ray
-     *
      * @return dir
      */
     public Vector getDir() {
@@ -66,6 +64,11 @@ public class Ray {
         return "p(0,0): " + _p0 + ", direction:" + _dir;
     }
 
+    /**
+     * getter for the point
+     * @param t the distance we add to the start point
+     * @return the new point we create
+     */
     public Point3D getPoint(double t) {
         Point3D p = getP0().add(getDir().scale(t));
         return p;
@@ -73,7 +76,6 @@ public class Ray {
 
     /**
      * function to find the closest point to the ray
-     *
      * @param point3DList the list of the points
      * @return the closest point to the start of the ray
      */
@@ -95,10 +97,9 @@ public class Ray {
     }
 
     /**
-     * function that get the closest points to ray
-     *
-     * @param GeoPointList
-     * @return
+     * function that get the closest geo points to ray
+     * @param GeoPointList the list of the geo points
+     * @return the closest geo point to the start of the ray
      */
     public GeoPoint getClosestGeoPoint(List<GeoPoint> GeoPointList) {
         if (GeoPointList == null || GeoPointList.size() == 0) {
@@ -107,7 +108,7 @@ public class Ray {
         GeoPoint minPoint = GeoPointList.get(0);
         double minDistance = _p0.distance(GeoPointList.get(0)._point);
 
-        for (int i = 1; i < GeoPointList.size(); i++) {
+        for (int i = 1; i < GeoPointList.size(); i++) {//pass all over the list and check if geo point is smaller than the minimum distance
             double distance = _p0.distance(GeoPointList.get(i)._point);
             if (distance < minDistance) {
                 minDistance = distance;

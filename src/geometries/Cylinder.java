@@ -13,7 +13,12 @@ import java.util.List;
 public class Cylinder extends Tube{
     double _height;
 
-    //constructor
+    /**
+     * constructor
+     * @param axisRay the axis ray
+     * @param radius radius of the Cylinder
+     * @param height the height of the Cylinder
+     */
     public Cylinder(Ray axisRay, double radius, double height) {
         super(axisRay, radius);
         _height = height;
@@ -37,8 +42,8 @@ public class Cylinder extends Tube{
     }
 
     /**
-     * bonus
-     //* @param p
+     * bonus we did not do
+     * @param ray
      * @return
      */
 //    @Override
@@ -46,6 +51,11 @@ public class Cylinder extends Tube{
 //        return super.getNormal(p);
 //    }
 
+    /**
+     * function to find the intersection points with specific ray
+     * @param ray the specific ray we check the intersection with the Cylinder
+     * @return list of all intersection points
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         return super.findIntersections(ray);

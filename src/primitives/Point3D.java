@@ -13,7 +13,10 @@ public class Point3D {
     public final static Point3D ZERO = new Point3D(0d, 0d, 0d);
 
     /**
-     *  constructor
+     * constructor
+     * @param x x
+     * @param y y
+     * @param z z
      */
 
     public Point3D(double x, double y, double z) {
@@ -24,6 +27,10 @@ public class Point3D {
 
     }
 
+    /**
+     * getter for x
+     * @return x coordinate
+     */
     public double getX() {
         return _x._coord;
     }
@@ -43,7 +50,6 @@ public class Point3D {
 
     /**
      * function that make sub between 2 vectors
-     *
      * @param pt2 the point at origin of vector
      * @return new Vector
      */
@@ -61,7 +67,6 @@ public class Point3D {
 
     /**
      * function that add vector to point
-     *
      * @param vec the vector we add
      * @return the origin point plus the vector
      */
@@ -71,15 +76,11 @@ public class Point3D {
                 _y._coord + vec._head._y._coord,
                 _z._coord + vec._head._z._coord
         );
-        // if (ZERO.equals(newPoint)) {
-        //   throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
-        //}
         return newPoint;
     }
 
     /**
      * function that calculate the distance between 2 points
-     *
      * @param po the second point in 3D
      * @return squared distance
      */
@@ -91,7 +92,6 @@ public class Point3D {
 
     /**
      * euclidean distance
-     *
      * @param po2 the second point
      * @return distance
      */
@@ -101,8 +101,8 @@ public class Point3D {
 
     /**
      * function that checks if points are at the same line
-     * @param p1
-     * @return
+     * @param p1 the point we check with
+     * @return true/false
      */
     public boolean isSameLine(Point3D p1) {
 

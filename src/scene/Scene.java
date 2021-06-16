@@ -18,28 +18,50 @@ public class Scene {
     public Geometries _geometries;
     public List<LightSource> _lights=new LinkedList<LightSource>();
 
+    /**
+     * constructor
+     * @param name the name of the scene
+     */
     public Scene(String name) {
         _name = name;
         _geometries= new Geometries();
     }
 
-    //setter for the background
+    /**
+     * setter for the background, builder pattern
+     * @param background the background of the scene
+     * @return the scene
+     */
     public Scene setBackground(Color background) {
         _background = background;
         return this;
     }
-//setter for the ambient light
+
+    /**
+     * setter for the ambient light, builder pattern
+     * @param ambientLight the ambient light of the scene
+     * @return the scene
+     */
     public Scene setAmbientLight(AmbientLight ambientLight) {
         _ambientLight = ambientLight;
         return this;
     }
-//setter for the geometries
+
+    /**
+     * setter for the geometries, builder pattern
+     * @param geometries the geometries of the scene
+     * @return the scene
+     */
     public Scene setGeometries(Geometries geometries) {
         _geometries = geometries;
         return this;
     }
 
-    //setter for the lights
+    /**
+     * setter for the lights,builder pattern
+     * @param lights the lights of the scene
+     * @return  the scene
+     */
     public Scene setLights(List<LightSource> lights) {
         _lights = lights;
         return this;

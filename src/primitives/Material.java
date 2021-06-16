@@ -11,9 +11,9 @@ public class Material {
     public double _kR=0.0; //Coefficient of reflection
 
     /**
-     *  setter for kT
-     * @param kT
-     * @return
+     * setter for kT, like builder pattern
+     * @param kT transparency
+     * @return the material
      */
     public Material setkT(double kT) {
         _kT = kT;
@@ -21,9 +21,9 @@ public class Material {
     }
 
     /**
-     *  setter for kR
-     * @param kR
-     * @return
+     * setter for kR, like builder pattern
+     * @param kR mirror or not
+     * @return the material
      */
     public Material setkR(double kR) {
         _kR = kR;
@@ -31,7 +31,9 @@ public class Material {
     }
 
     /**
-     *  setter for kD
+     * setter for kD, like builder pattern
+     * @param kD Diffusion
+     * @return the material
      */
 
     public Material setKd(double kD) {
@@ -40,9 +42,9 @@ public class Material {
     }
 
     /**
-     * setter for kS
-     * @param kS
-     * @return
+     * setter for kS, like builder pattern
+     * @param kS Specular
+     * @return the material
      */
 
     public Material setKs(double kS) {
@@ -51,9 +53,9 @@ public class Material {
     }
 
     /**
-     * setter for nShininess
-     * @param nShininess
-     * @return
+     * setter for nShininess, like builder pattern
+     * @param nShininess Shininess
+     * @return the material
      **/
     public Material setnShininess(int nShininess) {
        _nShininess = nShininess;

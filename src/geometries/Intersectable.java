@@ -20,9 +20,8 @@ public interface Intersectable {
 
         /**
          * constructor get 2 parameters
-         *
-         * @param geometry
-         * @param point
+         * @param geometry the geometry
+         * @param point the point of the geometry
          */
         public GeoPoint(Geometry geometry, Point3D point) {
             _geometry = geometry;
@@ -38,9 +37,9 @@ public interface Intersectable {
         }
     }
 
-    /** function that return all the points that intersected the current geometry
-     * @param ray
-     * @return
+    /** function that return all the points that intersected the current geometry with specific ray
+     * @param ray the specific ray
+     * @return list of the intersection points
      */
     default List<Point3D> findIntersections(Ray ray) {
         var geoList = findGeoIntersections(ray);
@@ -50,16 +49,17 @@ public interface Intersectable {
 
     /**
      * function that return all the points that intersected the current geometry and get 2 parameters
-     * @param ray
+     * @param ray the specific ray we choose the intersection with
      * @param maxDistance the distance from the light
-     * @return
+     * @return list of the intersection geoPoints
      */
     List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance);
 
     /**
      * default function for 1 parameter
-     * @param ray
-     * @return
+     * function that return all the points that intersected the current geometry with specific ray
+     * @param ray the specific ray we choose the intersection with
+     * @return list of the intersection geoPoints
      */
     default List<GeoPoint> findGeoIntersections(Ray ray) {
         return findGeoIntersections(ray, Double.POSITIVE_INFINITY);

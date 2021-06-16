@@ -10,15 +10,15 @@ public interface LightSource {
 
     /**
      * getter of intensity of the light
-     * @param p
-     * @return
+     * @param p the point of the intersection with some geometry
+     * @return the intensity
      */
     public Color getIntensity(Point3D p);
 
     /**
      * return vector that touch the object
-     * @param p
-     * @return
+     * @param p the point of the intersection
+     * @return the vector of the light
      */
     public Vector getL(Point3D p);
 

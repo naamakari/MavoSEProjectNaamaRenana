@@ -17,7 +17,11 @@ public class Tube extends Geometry{
     Ray _axisRay;
     double _radius;
 
-    //constructor
+    /**
+     * constructor
+     * @param axisRay the axis ray
+     * @param radius the radius of the tube
+     */
     public Tube(Ray axisRay, double radius) {
         _axisRay = axisRay;
         _radius = radius;
@@ -47,6 +51,11 @@ public class Tube extends Geometry{
                 '}';
     }
 
+    /**
+     * function that calculate normal of the tube
+     * @param p the point we calculate the normal for
+     * @return the normal of the tube
+     */
     @Override
     public Vector getNormal(Point3D p) {
         Point3D p0=_axisRay.getP0();
@@ -69,16 +78,21 @@ public class Tube extends Geometry{
         return p.subtract(O).normalize();
     }
 
+    /**
+     * (not) implements the method of find intersections for tube with specific ray
+     * @param ray the specific ray
+     * @return list of the intersection points
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         return null;
     }
 
     /**
-     * (not) implements the method of find Geo intersections for tube
-     * @param ray
+     * (not) implements the method of find Geo intersections for tube with specific ray
+     * @param ray the specific ray
      * @param maxDistance the distance from the light
-     * @return
+     * @return list of the intersection geo points
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {

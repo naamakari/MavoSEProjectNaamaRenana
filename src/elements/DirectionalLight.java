@@ -22,8 +22,8 @@ private Vector _direction;
 
     /**
      * function that return the intensity, in directional light its the intensity of the light
-     * @param p
-     * @return
+     * @param p the point we calculate the intensity for
+     * @return the color of the point
      */
     @Override
     public Color getIntensity(Point3D p) {
@@ -32,8 +32,8 @@ private Vector _direction;
 
     /**
      * return the vector -the value of the direction of light
-     * @param p
-     * @return
+     * @param p the point the light arrive to
+     * @return the vector of the light
      */
     @Override
     public Vector getL(Point3D p) {
@@ -42,8 +42,8 @@ private Vector _direction;
 
     /**
      * function to get the distance for the directional light (infinity)
-     * @param point
-     * @return
+     * @param point the point the light arrived to
+     * @return the distance- infinity
      */
     @Override
     public double getDistance(Point3D point) {

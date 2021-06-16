@@ -30,7 +30,6 @@ public class Vector {
             throw new IllegalArgumentException("Vector head cannot be Point(0,0,0)");
         }
         _head = head;
-        //this(new Point3D(x, y, z));
     }
 
     /**
@@ -113,12 +112,6 @@ public class Vector {
         return new Vector(_head._x._coord - vec._head._x._coord,
                 _head._y._coord - vec._head._y._coord,
                 _head._z._coord - vec._head._z._coord);
-//        if (vec.equals(this)) {
-//            throw new IllegalArgumentException("parameter vector should be something else");
-//        }
-//        return vec._head.subtract(_head);
-
-
     }
 
     /**
@@ -156,11 +149,6 @@ public class Vector {
      */
     public Vector normalize() {
         double len = length();
-//
-//        if (len == 0) {
-//            throw new ArithmeticException("cannot divide by zero");
-//        }
-
         double newX = _head._x._coord / len;
         double newY = _head._y._coord / len;
         double newZ = _head._z._coord / len;
@@ -171,14 +159,13 @@ public class Vector {
         if (ZERO.equals(newPoint)) {
             throw new IllegalArgumentException("head vector cannot be point(0,0,0)");
         }
-
         _head = newPoint;
         return this;
     }
 
     /**
-     * function that creat new vector and normalized it
-     * @return
+     * function that create new vector and normalized it
+     * @return new normalized vector
      */
     public Vector normalized() {
         Vector newVec = new Vector(_head);//create new vector

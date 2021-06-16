@@ -16,27 +16,34 @@ public abstract class Geometry implements Intersectable{
 
     /**
      * getter for the emission
-     * @return
+     * @return the color emission
      */
     public Color getEmission() {
         return _emission;
     }
 
-    //getter for the material
+    /**
+     * getter for the material
+     * @return the material
+     */
     public Material getMaterial() {
         return _material;
     }
 
-    //setter for the material
+    /**
+     * setter for the material, like builder pattern
+     * @param material the material
+     * @return the geometry
+     */
     public Geometry setMaterial(Material material) {
         _material = material;
         return this;
     }
 
     /**
-     * setter for the emission
-     * @param emission
-     * @return the object himself
+     * setter for the emission, like builder pattern
+     * @param emission the emission of the geometry
+     * @return the object himself, the geometry
      */
     public Geometry setEmission(Color emission) {
         _emission = emission;
@@ -45,8 +52,8 @@ public abstract class Geometry implements Intersectable{
 
     /**
      * function that calculate the normal of every geometry
-     * @param point
-     * @return
+     * @param point the point we want to calculate the normal for
+     * @return the normal
      */
    public abstract Vector getNormal(Point3D point);
 

@@ -21,7 +21,6 @@ public class Camera {
 
     /**
      * constructor
-     *
      * @param p0  start point
      * @param vTo z axis
      * @param vUp y axis
@@ -37,8 +36,7 @@ public class Camera {
     }
 
     /**
-     * like builder pattern
-     *
+     * setter like builder pattern
      * @param width  of the view plane
      * @param height of the view plane
      * @return
@@ -49,6 +47,11 @@ public class Camera {
         return this;
     }
 
+    /**
+     * setter for distance like builder pattern
+     * @param distance
+     * @return
+     */
     public Camera setDistance(double distance) {
         _distance = distance;
         return this;
@@ -57,7 +60,6 @@ public class Camera {
     /**
      * A function that builds a ray through a pixel-particle, the function is summed inside
      * a nested loop that goes into all the pixel-particles according to the number of samples we determined
-     *
      * @param nX              width of the row, amount of columns
      * @param nY              width of the column, amount of rows
      * @param j               y axis
@@ -133,21 +135,38 @@ public class Camera {
             Pij = Pij.add(_vUp.scale(Yi));
         }
 
+
         return new Ray(_p0, Pij.subtract(_p0).normalize());
     }
 
+    /**
+     * getter for p0
+     * @return Point3D p0
+     */
     public Point3D getP0() {
         return _p0;
     }
 
+    /**
+     * getter for vector To
+     * @return Vector To
+     */
     public Vector getvTo() {
         return _vTo;
     }
 
+    /**
+     * getter for Vector Up
+     * @return Vector Up
+     */
     public Vector getvUp() {
         return _vUp;
     }
 
+    /**
+     * getter for Vector vRight
+     * @return Vector vRight
+     */
     public Vector getvRight() {
         return _vRight;
     }

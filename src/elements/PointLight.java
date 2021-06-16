@@ -18,9 +18,8 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * constructor
-     *
-     * @param intensity
-     * @param position
+     * @param intensity the intensity of the light
+     * @param position the start point of the Point light
      */
     public PointLight(Color intensity, Point3D position) {
         super(intensity);
@@ -29,9 +28,8 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * function that calculate the intensity at the point where the point light arrived
-     *
      * @param p the point of the shape the light arrived
-     * @return the intensity
+     * @return the intensity of the light
      */
     @Override
     public Color getIntensity(Point3D p) {
@@ -42,9 +40,8 @@ public class PointLight extends Light implements LightSource {
     /**
      * function to find the direction of the light that went to from the
      * point light to the shape
-     *
-     * @param p
-     * @return
+     * @param p the point of the intersection on the shape
+     * @return vector of the direction of the point light
      */
     @Override
     public Vector getL(Point3D p) {
@@ -53,9 +50,8 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * function to get the distance for the Point light after calculate
-     *
-     * @param point
-     * @return
+     * @param point the point of the intersection with the geometry
+     * @return the distance between the start point of the light to the intersection point
      */
     @Override
     public double getDistance(Point3D point) {
@@ -64,6 +60,8 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for the kc factor
+     * @param kC Discount factor from the formula, Multiplied by nothing
+     * @return Point light, like builder pattern
      */
     public PointLight setKc(double kC) {
         _kC = kC;
@@ -72,9 +70,8 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for the kl factor
-     *
-     * @param kL
-     * @return
+     * @param kL Discount factor from the formula, Multiplied by the distance
+     * @return Point light, like builder pattern
      */
     public PointLight setKl(double kL) {
         _kL = kL;
@@ -83,9 +80,8 @@ public class PointLight extends Light implements LightSource {
 
     /**
      * setter for the kq factor
-     *
-     * @param kQ
-     * @return
+     * @param kQ Discount factor from the formula, Multiplied by square distance
+     * @return Point light, like builder pattern
      */
     public PointLight setKq(double kQ) {
         _kQ = kQ;

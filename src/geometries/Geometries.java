@@ -22,7 +22,7 @@ public class Geometries implements Intersectable {
 
     /**
      * parameter constructor
-     * @param geometries
+     * @param geometries the geometries we send the constructor
      */
     public Geometries(Intersectable... geometries) {
             add(geometries);
@@ -30,19 +30,19 @@ public class Geometries implements Intersectable {
 
     /**
      * function for add geometry to the list of the geometries
-     * @param geometries
+     * @param geometries the geometries we want to add to the lost of the geometries
      */
     public void add(Intersectable... geometries) {
-        for (int i = 0; geometries.length > i; i++) {
+        for (int i = 0; i<geometries.length; i++) {//pass all over the list of the geometries
             _listGeometries.add(geometries[i]);
         }
     }
 
 
     /**
-     * function that return all the gePoints that intersected the current geometry
-     * @param ray
-     * @param maxDistance
+     * function that return all the gePoints that intersected the current geometry with specific ray
+     * @param ray the specific ray we check the intersection with
+     * @param maxDistance the max distance
      * @return  list of a geoPoints3D
      */
     @Override

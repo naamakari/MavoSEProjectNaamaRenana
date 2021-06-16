@@ -92,15 +92,17 @@ public class Polygon extends Geometry {
 
     /**
      * implements the method of find Geo intersections for polygon
-     * @param ray
+     * @param ray the specific ray we check the intersection with
      * @param maxDistance the distance from the light
-     * @return
+     * @return list of the goe points intersection with the ray
      */
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
 
+        //find the intersection withe the plane
         List<GeoPoint> result = plane.findGeoIntersections(ray,maxDistance);
 
+        //if there is no intersection points with the plane
         if (result == null) {
             return result;
         }

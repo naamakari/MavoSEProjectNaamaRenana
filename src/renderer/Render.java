@@ -76,17 +76,20 @@ public class Render {
             Ray ray;
             int Nx=_imageWriter.getNx();
             int Ny=_imageWriter.getNy();
-            if (threadsCount == 0) {
+            if (threadsCount == 0) {// no threading
                 for (int i = 0; i < Ny; i++) {
                     for (int j = 0; j < Nx; j++) {
                         Color colAverage = new Color(0, 0, 0);
+                        //we add to the improvement of the super sampling
+                        //loop in loop for create little pixels for every pixel at the image
                         for (int ii = 0; ii < numberOfSamples; ii++) {
                             for (int jj = 0; jj < numberOfSamples; jj++) {
-                                // ray = _camera.constructRayThroughRandomPixel(Nx,Ny,j,i,numberOfSamples,ii,jj);
                                 ray = _camera.constructRayThroughPixel(Nx * numberOfSamples, Ny * numberOfSamples, j * numberOfSamples + jj, i * numberOfSamples + ii);
+                               //add the color to the sum of the color of the pixel
                                 colAverage = colAverage.add(_rayTracerBase.traceRay(ray));
                             }
                         }
+                        //paint the pixel we work on with the average color we found for this pixel
                         _imageWriter.writePixel(j, i, colAverage.reduce(numberOfSamples * numberOfSamples));
                     }
 
@@ -102,6 +105,8 @@ public class Render {
     /**
      * This function renders image's pixel color map from the scene included with
      * the Renderer object
+     * this function is for the not improvement of the super sampling,
+     * we create a new function and did not add a default parameter because the running time
      */
     public void renderImage() {
         try {
@@ -329,15 +334,21 @@ public class Render {
          * @param row pixel's row number (pixel index in column)
          */
         private void castRay(int nX, int nY, int col, int row,int samples) {
-            Color colAverage = new Color(0, 0, 0);
-            for (int ii = 0; ii < samples; ii++) {
-                for (int jj = 0; jj < samples; jj++) {
-                    // ray = _camera.constructRayThroughRandomPixel(Nx,Ny,j,i,numberOfSamples,ii,jj);
-                   Ray ray = _camera.constructRayThroughPixel(nX * samples, nY * samples, col * samples + jj, row * samples + ii);
-                    colAverage = colAverage.add(_rayTracerBase.traceRay(ray));
-                }
+            if(samples==1){// if there is no improvement of the super sampling
+                Ray ray = _camera.constructRayThroughPixel(nX, nY, col, row);
+                Color color = _rayTracerBase.traceRay(ray);
+                _imageWriter.writePixel(col, row, color);
             }
-            _imageWriter.writePixel(col, row, colAverage.reduce(samples*samples));
+            else {// if there is improvement of the super sampling
+                Color colAverage = new Color(0, 0, 0);
+                for (int ii = 0; ii < samples; ii++) {
+                    for (int jj = 0; jj < samples; jj++) {
+                        Ray ray = _camera.constructRayThroughPixel(nX * samples, nY * samples, col * samples + jj, row * samples + ii);
+                        colAverage = colAverage.add(_rayTracerBase.traceRay(ray));
+                    }
+                }
+                _imageWriter.writePixel(col, row, colAverage.reduce(samples*samples));
+            }
         }
 
         /**

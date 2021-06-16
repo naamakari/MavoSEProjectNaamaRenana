@@ -21,8 +21,7 @@ public class BasicRayTracer extends RayTracerBase {
 
     /**
      * constructor, use the father
-     *
-     * @param scene
+     * @param scene the scene we work with
      */
     public BasicRayTracer(Scene scene) {
         super(scene);
@@ -30,28 +29,21 @@ public class BasicRayTracer extends RayTracerBase {
 
 
     /**
-     * implements of the abstract function
+     * implements of the abstract function of trace ray
      * @param ray the ray that passed
-     * @return the color
+     * @return the color of the intersection point
      */
     @Override
     public Color traceRay(Ray ray) {
-//        List<GeoPoint> intersectionsList = _scene._geometries.findGeoIntersections(ray);
-//        if (intersectionsList == null) {
-//            return _scene._background;
-//        }
-//        GeoPoint closestPoint = ray.getClosestGeoPoint(intersectionsList);
-//        return calColor(closestPoint, ray);
-
         GeoPoint closestPoint = findClosestIntersection(ray);
         return closestPoint == null ? _scene._background : calcColor(closestPoint, ray);
     }
 
     /**
      * recursive function for calculate the color of the point
-     * @param geoPoint
-     * @param ray
-     * @return
+     * @param geoPoint the point we calculate the color for
+     * @param ray the ray that pass into the point
+     * @return the color of the point
      */
     private Color calcColor(GeoPoint geoPoint, Ray ray) {
         return calcColor(geoPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K)
@@ -63,9 +55,9 @@ public class BasicRayTracer extends RayTracerBase {
      * function that calculate the global effects
      * @param intersection the geoPoint of the intersection
      * @param v
-     * @param level
+     * @param level level of the Recursion
      * @param k
-     * @return
+     * @return the color
      */
     private Color calcGlobalEffects(GeoPoint intersection, Vector v, int level, double k) {
         Color color = Color.BLACK;
@@ -83,36 +75,37 @@ public class BasicRayTracer extends RayTracerBase {
 
     /**
      * the function that send from calcGlobalEffects function.
-     * @param ray
-     * @param level
+     * @param ray the ray that pass into the point
+     * @param level level of the Recursion
      * @param kX
      * @param kkX
-     * @return
+     * @return the color at the point
      */
     private Color calcGlobalEffect(Ray ray, int level, double kX, double kkX) {
             GeoPoint gp = findClosestIntersection(ray);
             return (gp == null ? _scene._background : calcColor(gp, ray, level-1, kkX)
             ).scale(kX);
     }
+
     /**
      * function that calculate the color of point
      * @param geoPoint the point we want to calculate the color for
+     * @param ray
+     * @param level
+     * @param k
      * @return the color the function found
      */
     public Color calcColor(GeoPoint geoPoint, Ray ray,int level, double k) {
         Color color =geoPoint._geometry.getEmission();
         color = color.add(calcLocalEffects(geoPoint, ray,k));
         return 1 == level ? color : color.add(calcGlobalEffects(geoPoint, ray.getDir(), level, k));
-//        return _scene._ambientLight.getIntensity()
-//                .add(geoPoint._geometry.getEmission()
-//                        //add calculated light contribution from all light sources)
-//                        .add(calcLocalEffects(geoPoint, ray)));
     }
 
     /**
-     * A function that calculates the diffusion and speculator for each object
-     * @param intersection
+     * A function that calculates the diffusion and speculator for each obje
+     * @param intersection the intersection point
      * @param ray
+     * @param k
      * @return
      */
     private Color calcLocalEffects(GeoPoint intersection, Ray ray,double k) {
@@ -175,7 +168,7 @@ public class BasicRayTracer extends RayTracerBase {
      * @param l
      * @param n
      * @param geoPoint
-     * @return
+     * @return the value of the transparency of the point it pass into
      */
     private double transparency(LightSource light, Vector l, Vector n, GeoPoint geoPoint) {
         Vector lightDirection = l.scale(-1); // from point to light source
@@ -203,7 +196,7 @@ public class BasicRayTracer extends RayTracerBase {
      * @param v              the vector from the camera
      * @param nShininess     the value of the shininess of the material
      * @param lightIntensity the intensity of the light
-     * @return
+     * @return the specular color
      */
     private Color calcSpecular(double ks, Vector l, Vector n, Vector v, int nShininess, Color lightIntensity) {
         Vector r = l.subtract(n.scale(l.dotProduct(n) * 2));
@@ -217,7 +210,7 @@ public class BasicRayTracer extends RayTracerBase {
      * @param l              the vector from the light source
      * @param n              the normal of the object
      * @param lightIntensity the intensity of the light
-     * @return
+     * @return the diffusive color
      */
     private Color calcDiffusive(double kd, Vector l, Vector n, Color lightIntensity) {
         double factor = alignZero(Math.abs(l.dotProduct(n)));
@@ -251,8 +244,8 @@ public class BasicRayTracer extends RayTracerBase {
 
     /**
      *refactoring of the function to find the closest intersection
-     * @param ray
-     * @return
+     * @param ray the ray we sent to the geometry
+     * @return point if intersection
      */
     private GeoPoint findClosestIntersection(Ray ray){
         return ray.getClosestGeoPoint(_scene._geometries.findGeoIntersections(ray));

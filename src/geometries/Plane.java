@@ -19,9 +19,10 @@ public class Plane extends Geometry {
 
     /**
      * constructor of 3 points
-     * @param p1
-     * @param p2
-     * @param p3
+     *
+     * @param p1 first point
+     * @param p2 second point
+     * @param p3 third point
      */
     public Plane(Point3D p1, Point3D p2, Point3D p3) {
         _q0 = p1;
@@ -46,12 +47,13 @@ public class Plane extends Geometry {
     /**
      * constructor of point and vector
      * normal vector for plane, will normalized automatically
-     * @param point
-     * @param vector
+     *
+     * @param point  the point that build the plane
+     * @param vector the vector that build the plane
      */
     public Plane(Point3D point, Vector vector) {
         _q0 = point;
-        _normal = vector.normalized();
+        _normal = vector.normalized();//normalized
     }
 
     /**
@@ -75,6 +77,12 @@ public class Plane extends Geometry {
         return _normal;
     }
 
+    /**
+     * getter of the normal vector of the Plane
+     *
+     * @param point the point we want to calculate the normal for
+     * @return the normal
+     */
     @Override
     public Vector getNormal(Point3D point) {
         return _normal;
@@ -82,22 +90,23 @@ public class Plane extends Geometry {
 
     /**
      * implements the method of find Geo intersections for plane
-     * @param ray
+     * @param ray         the specific ray
      * @param maxDistance the distance from the light
-     * @return
+     * @return list of geo points intersection
      */
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray,double maxDistance) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
         if (_q0.equals(P0)) {
             return null;
         }
+        //create the vector from the point of the plane to start point of the ray
         Vector P0_Q0 = _q0.subtract(P0);
 
         double numerator = alignZero(_normal.dotProduct(P0_Q0));
 
-
+//if the numerator equals to zero
         if (isZero(numerator)) {
             return null;
         }
@@ -110,12 +119,11 @@ public class Plane extends Geometry {
         }
 
         double t = alignZero(numerator / nv);
-        if(t<=0||alignZero(t-maxDistance)>0){
+        if (t <= 0 || alignZero(t - maxDistance) > 0) {
             return null;
         }
-        // Point3D p = P0.add(v.scale(t));
+
         Point3D P = ray.getPoint(t);
-        return List.of(new GeoPoint(this,P));
-      // return List.of(new GeoPoint(this,new Point3D()));
+        return List.of(new GeoPoint(this, P));
     }
 }
