@@ -257,7 +257,7 @@ public class ReflectionRefractionTests {
 
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render()
-                .setMultithreading(3)//
+                .setMultithreading(3)//play the thread
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
