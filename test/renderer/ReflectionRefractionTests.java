@@ -176,6 +176,7 @@ public class ReflectionRefractionTests {
         Point3D Q= new Point3D(-52,-31,50);
         Point3D R=new Point3D(-30,-25,20);
         Point3D S=new Point3D(-5,-31,50);
+        Random rand=new Random();
 
         Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
                 .setViewPlaneSize(200, 200).setDistance(1000);
@@ -215,12 +216,18 @@ public class ReflectionRefractionTests {
                 new Polygon(M,O,L,N).setEmission(new Color(94,199,92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)));
 
 
-    double x= Math.random()*120-120;
-    double y=Math.random()*120-120;
-        for (int i = 0; i < 50; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),0.5).setEmission(new Color(java.awt.Color.RED)));
-             x= Math.random()*120-120;
-             y=Math.random()*120-120;
+    double x= Math.random()*100+1;
+    double y=(Math.random()*100+50)*-1;
+        for (int i = 0; i < 1000; i++) {
+            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1)));
+             x= Math.random()*100+1;
+             y=(Math.random()*110+50)*-1;
+        }
+
+        for (int i = 0; i < 1000; i++) {
+            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1)));
+            x= (Math.random()*100+1)*-1;
+            y=(Math.random()*110+50)*-1;
         }
 
 //
