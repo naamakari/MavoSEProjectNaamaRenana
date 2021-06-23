@@ -215,10 +215,12 @@ public class ReflectionRefractionTests {
                 new Polygon(M,O,L,N).setEmission(new Color(94,199,92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)));
 
 
-    double x= new Random(-120,120);
-    double y=0;
+    double x= Math.random()*120-120;
+    double y=Math.random()*120-120;
         for (int i = 0; i < 50; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x,y,0),0.5));
+            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),0.5).setEmission(new Color(java.awt.Color.RED)));
+             x= Math.random()*120-120;
+             y=Math.random()*120-120;
         }
 
 //
