@@ -219,19 +219,23 @@ public class ReflectionRefractionTests {
     double x= Math.random()*100+1;
     double y=(Math.random()*100+50)*-1;
         for (int i = 0; i < 1000; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1)));
+            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
+            .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
              x= Math.random()*100+1;
              y=(Math.random()*110+50)*-1;
 
         }
 
         for (int i = 0; i < 1000; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1)));
+            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
+                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
             x= (Math.random()*100+1)*-1;
             y=(Math.random()*110+50)*-1;
         }
 
-//
+        //scene._geometries.buildHierarchicalBVH();
+       // scene._geometries.setBVHImprovementOff(false);
+
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.03));
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low

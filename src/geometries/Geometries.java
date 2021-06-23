@@ -12,8 +12,23 @@ import java.util.List;
 public class Geometries implements Intersectable {
 
     List<Intersectable> _listGeometries = new LinkedList<>();
-    //field for box of couple of boxes. to union
+    /**
+     * field for box of couple of boxes, to union both boxes
+     */
     Box _box = new Box();
+
+    /**
+     * field to check if the BVH improvement is off or on (false is on, true is off)
+     */
+    boolean _BVHImprovementOff=true;
+
+    /**
+     * setter for the on/off improvement
+     * @param BVH
+     */
+    public void setBVHImprovementOff(boolean BVH) {
+        _BVHImprovementOff = BVH;
+    }
 
     /**
      * setter for the box
@@ -67,16 +82,18 @@ public class Geometries implements Intersectable {
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> intersections = null;
         for (Intersectable geometry : _listGeometries) {
-            List<GeoPoint> geoIntersections = geometry.findGeoIntersections(ray, maxDistance);
-            //if the list is not empty
-            if (geoIntersections != null) {
-                //if it is the first time to add intersection
-                if (intersections == null) {
-                    intersections = new LinkedList<>();
+            if (_BVHImprovementOff || geometry.getBox().isIntersectBox(ray)) {//check if the ray intersect the box of the geometry at all
+                List<GeoPoint> geoIntersections = geometry.findGeoIntersections(ray, maxDistance);
+                //if the list is not empty
+                if (geoIntersections != null) {
+                    //if it is the first time to add intersection
+                    if (intersections == null) {
+                        intersections = new LinkedList<>();
+                    }
+                    intersections.addAll(geoIntersections);
                 }
-                intersections.addAll(geoIntersections);
+                // if there are elements in geoIntersections – add them to intersections
             }
-            // if there are elements in geoIntersections – add them to intersections
         }
         return intersections;
     }
@@ -103,6 +120,12 @@ public class Geometries implements Intersectable {
         return new Box(p1, p2, p3);
     }
 
+    /**
+     * function that build the 'tree' that save the geometries
+     * we build it as list inside list
+     * at first we remove all the infinity geometries from the list
+     * then we insert all the finite geometries to the binary tree
+     */
     public void buildHierarchicalBVH() {
         //remove all the infinity geometries from the list
         List<Intersectable> inifinityGeometries=new LinkedList<>();
