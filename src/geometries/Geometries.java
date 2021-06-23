@@ -59,7 +59,6 @@ public class Geometries implements Intersectable {
 
     /**
      * function that return all the gePoints that intersected the current geometry with specific ray
-     *
      * @param ray         the specific ray we check the intersection with
      * @param maxDistance the max distance
      * @return list of a geoPoints3D
@@ -82,6 +81,12 @@ public class Geometries implements Intersectable {
         return intersections;
     }
 
+    /**
+     * help function for building the box of 2 Intersectables
+     * @param left left son
+     * @param right right son
+     * @return the new box the function create
+     */
     public Box buildNewBox(Intersectable left, Intersectable right) {
         double minX = Math.min(left.getBox().getDownLeftFront().getX(), right.getBox().getDownLeftFront().getX());
         double minY = Math.min(left.getBox().getDownLeftFront().getY(), right.getBox().getDownLeftFront().getY());
