@@ -28,6 +28,22 @@ public class Point3D {
     }
 
     /**
+     * getter for y
+     * @return y coordinate
+     */
+    public double getY() {
+        return _y._coord;
+    }
+
+    /**
+     * getter for z
+     * @return z coordinate
+     */
+    public double getZ() {
+        return _z._coord;
+    }
+
+    /**
      * getter for x
      * @return x coordinate
      */

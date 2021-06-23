@@ -16,6 +16,7 @@ public class Polygon extends Geometry {
     /**
      * List of polygon's vertices
      */
+
     protected List<Point3D> vertices;
     /**
      * Associated plane in which the polygon lays
@@ -51,8 +52,44 @@ public class Polygon extends Geometry {
         // polygon with this plane.
         // The plane holds the invariant normal (orthogonal unit) vector to the polygon
         plane = new Plane(vertices[0], vertices[1], vertices[2]);
-        if (vertices.length == 3)
+        if (vertices.length == 3) {
+            //create the box for triangle
+            //the min and max x,y,z
+            double minX = Double.POSITIVE_INFINITY;
+            double minY = Double.POSITIVE_INFINITY;
+            double minZ = Double.POSITIVE_INFINITY;
+            double maxX = Double.NEGATIVE_INFINITY;
+            double maxY = Double.NEGATIVE_INFINITY;
+            double maxZ = Double.NEGATIVE_INFINITY;
+            for (int i = 0; i < vertices.length; i++) {
+                if (vertices[i].getX() < minX) {
+                    minX = vertices[i].getX();
+                }
+                if (vertices[i].getY() < minY) {
+                    minY = vertices[i].getY();
+                }
+                if (vertices[i].getZ() < minZ) {
+                    minZ = vertices[i].getZ();
+                }
+                if (vertices[i].getX() > maxX) {
+                    maxX = vertices[i].getX();
+                }
+                if (vertices[i].getY() > maxY) {
+                    maxY = vertices[i].getY();
+                }
+                if (vertices[i].getZ() > maxZ) {
+                    maxZ = vertices[i].getZ();
+                }
+            }
+            _box.setUpRightBehind(new Point3D(maxX, maxY, maxZ));
+            _box.setDownLeftFront(new Point3D(minX, minY, minZ));
+            //the center of the box
+            double centerX = maxX - minX / 2;
+            double centerY = maxY - minY / 2;
+            double centerZ = maxZ - minZ / 2;
+            _box.setCenter(new Point3D(centerX, centerY, centerZ));
             return; // no need for more tests for a Triangle
+        }
 
 //        Vector n = plane.getNormal(null);
         Vector n = plane.getNormal();
@@ -82,6 +119,48 @@ public class Polygon extends Geometry {
             if (positive != (edge1.crossProduct(edge2).dotProduct(n) > 0))
                 throw new IllegalArgumentException("All vertices must be ordered and the polygon must be convex");
         }
+
+        //create the box for polygon
+        //the min and max x,y,z
+        double minX=Double.POSITIVE_INFINITY;
+        double minY=Double.POSITIVE_INFINITY;
+        double minZ=Double.POSITIVE_INFINITY;
+        double maxX=Double.NEGATIVE_INFINITY;
+        double maxY=Double.NEGATIVE_INFINITY;
+        double maxZ=Double.NEGATIVE_INFINITY;
+        for (int i = 0; i < vertices.length; i++) {
+            if(vertices[i].getX()<minX){
+                minX=vertices[i].getX();
+            }
+            if(vertices[i].getY()<minY){
+                minY=vertices[i].getY();
+            }
+            if(vertices[i].getZ()<minZ){
+                minZ=vertices[i].getZ();
+            }
+            if(vertices[i].getX()>maxX){
+                maxX=vertices[i].getX();
+            }
+            if(vertices[i].getY()>maxY){
+                maxY=vertices[i].getY();
+            }
+            if(vertices[i].getZ()>maxZ){
+                maxZ=vertices[i].getZ();
+            }
+        }
+        _box.setUpRightBehind(new Point3D(maxX,maxY,maxZ));
+        _box.setDownLeftFront(new Point3D(minX,minY,minZ));
+        //the center of the box
+        double centerX=maxX-minX/2;
+        double centerY=maxY-minY/2;
+        double centerZ=maxZ-minZ/2;
+        _box.setCenter(new Point3D(centerX,centerY,centerZ));
+    }
+
+
+    @Override
+    public Box getBox() {
+        return _box;
     }
 
     @Override

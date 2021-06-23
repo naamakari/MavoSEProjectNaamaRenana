@@ -1,5 +1,6 @@
 package geometries;
 
+
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -24,6 +25,18 @@ public class Sphere extends Geometry {
     public Sphere(Point3D center, double radius) {
         _center = center;
         _radius = radius;
+        //create the box for the improvement of BVH
+        //the box is around the sphere
+        double minX=center.getX()+radius;
+        double minY=center.getY()+radius;
+        double minZ=center.getZ()+radius;
+        double maxX=center.getX()-radius;
+        double maxY=center.getY()-radius;
+        double maxZ=center.getZ()-radius;
+        _box.setUpRightBehind(new Point3D(maxX,maxY,maxZ));
+        _box.setDownLeftFront(new Point3D(minX,minY,minZ));
+        //the center is the same center like the sphere
+        _box.setCenter(center);
     }
 
     /**
@@ -48,6 +61,12 @@ public class Sphere extends Geometry {
                 "_center=" + _center +
                 ", _radius=" + _radius +
                 '}';
+    }
+
+
+    @Override
+   public Box getBox() {
+        return _box;
     }
 
     /**

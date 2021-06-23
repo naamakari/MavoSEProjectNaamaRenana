@@ -17,6 +17,7 @@ public class Plane extends Geometry {
     final Point3D _q0;
     final Vector _normal;
 
+
     /**
      * constructor of 3 points
      *
@@ -39,8 +40,11 @@ public class Plane extends Geometry {
             throw new IllegalArgumentException("points are on the same line");
         }
         Vector n = v1.crossProduct(v2);
-
         _normal = n.normalize();
+        _box.setUpRightBehind(new Point3D(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY));
+        _box.setDownLeftFront(new Point3D(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY));
+        _box.setCenter(new Point3D(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY));
+
     }
 
 
@@ -54,6 +58,10 @@ public class Plane extends Geometry {
     public Plane(Point3D point, Vector vector) {
         _q0 = point;
         _normal = vector.normalized();//normalized
+        _box.setUpRightBehind(new Point3D(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY));
+        _box.setDownLeftFront(new Point3D(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY));
+        _box.setCenter(new Point3D(Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY, Double.POSITIVE_INFINITY));
+
     }
 
     /**
@@ -77,6 +85,12 @@ public class Plane extends Geometry {
         return _normal;
     }
 
+
+    @Override
+  public Box getBox() {
+        return _box;
+    }
+
     /**
      * getter of the normal vector of the Plane
      *
@@ -90,6 +104,7 @@ public class Plane extends Geometry {
 
     /**
      * implements the method of find Geo intersections for plane
+     *
      * @param ray         the specific ray
      * @param maxDistance the distance from the light
      * @return list of geo points intersection

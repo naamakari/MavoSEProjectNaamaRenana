@@ -51,6 +51,13 @@ public class Tube extends Geometry{
                 '}';
     }
 
+
+    @Override
+   public Box getBox() {
+        return _box;
+      //  throw new UnsupportedOperationException("The Geometry is infinity");
+    }
+
     /**
      * function that calculate normal of the tube
      * @param p the point we calculate the normal for

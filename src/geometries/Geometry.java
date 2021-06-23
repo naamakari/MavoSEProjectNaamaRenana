@@ -1,9 +1,6 @@
 package geometries;
 
-import primitives.Color;
-import primitives.Material;
-import primitives.Point3D;
-import primitives.Vector;
+import primitives.*;
 
 import java.util.Map;
 
@@ -13,6 +10,21 @@ import java.util.Map;
 public abstract class Geometry implements Intersectable{
     protected Color _emission=Color.BLACK;
     private Material _material=new Material();
+
+    //field of the box around the geometry
+    protected Box _box=new Box();
+
+
+    /**
+     * function that return the box of finite geometries
+     * @return
+     */
+  public abstract Box getBox();//{
+//        if (this.getUpRightBehind().getX()==Double.POSITIVE_INFINITY){
+//            throw new UnsupportedOperationException("The Geometry is infinity");
+//        }
+//        return this;
+//    }
 
     /**
      * getter for the emission
