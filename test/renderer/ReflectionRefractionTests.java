@@ -222,6 +222,7 @@ public class ReflectionRefractionTests {
             scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1)));
              x= Math.random()*100+1;
              y=(Math.random()*110+50)*-1;
+             //
         }
 
         for (int i = 0; i < 1000; i++) {
