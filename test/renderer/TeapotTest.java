@@ -1553,8 +1553,8 @@ import scene.Scene;
             scene._lights.add(new PointLight(new Color(500, 500, 500), new Point3D(100, 0, -100)) //
                     .setKq(0.000001));
 
-            scene._geometries.buildHierarchicalBVH();
-            scene._geometries.setBVHImprovementOff(false);
+            scene._geometries.buildHierarchicalBVH();//without this improvement it takes 1 minute and 42 seconds
+            scene._geometries.setBVHImprovementOff(false);//with this improvement it takes 39 seconds
             ImageWriter imageWriter = new ImageWriter("teapot", 800, 800);
             Render render = new Render()
                     .setMultithreading(3)//

@@ -215,7 +215,7 @@ public class ReflectionRefractionTests {
                 //DOWN
                 new Polygon(M, O, L, N).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)));
 
-
+//זה הלולאות שאת עשית
 //    double x= Math.random()*100+1;
 //    double y=(Math.random()*100+50)*-1;
 //        for (int i = 0; i < 200; i++) {
@@ -224,17 +224,18 @@ public class ReflectionRefractionTests {
 //             x= Math.random()*100+1;
 //             y=(Math.random()*110+50)*-1;
 //
-//        }
-//        for (int i = 0; i < 5000; i++) {
+        //}
+//        for (int i = 0; i < 1000; i++) {
 //            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
 //                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
 //            x= (Math.random()*100+1)*-1;
 //            y=(Math.random()*110+50)*-1;
 //        }
 
-
-        double x = Math.random() * 100 + 1;
-        double y = (Math.random() * 100 + 50) * -1;
+//זה לולאות שאני עשיתי, שיחקתי פה קצת עם המקומות של האיקס והy
+        //סתם יירקתי חלק מהמקומות כדי שיצא מקבצים רחוקים, אבל תכלס עדיין אין מספיק כדורים בציור. אולי אפשר להגדיל אותו קצת. מה שבאלנו תכלס
+       double  x = Math.random() * 100 + 1;
+       double  y = (Math.random() * 100 + 50) * -1;
         for (int i = 0; i < 200; i++) {
             scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
                     .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
@@ -242,37 +243,40 @@ public class ReflectionRefractionTests {
             y = (Math.random() * 110 + 50) * -1;
 
         }
-        for (int i = 0; i < 200; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-            x = (Math.random() * 100 + 1) * -1;
-            y = (Math.random() * 110 + 50) * -1;
-        }
+//        for (int i = 0; i < 200; i++) {
+//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
+//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
+//            x = (Math.random() * 100 + 1) * -1;
+//            y = (Math.random() * 110 + 50) * -1;
+//        }
 
-        for (int i = 0; i < 100; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-            x = (Math.random() * 100 + 1) * -1;
-            y =rand.nextInt(50)*-1;
-        }
+//        for (int i = 0; i < 100; i++) {
+//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
+//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
+//            x = (Math.random() * 100 + 1) * -1;
+//            y =rand.nextInt(50)*-1;
+//        }
         for (int i = 0; i < 50; i++) {
             scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
                     .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
             x = rand.nextInt(60);
             y =rand.nextInt(50)*-1;
         }
-        for (int i = 0; i < 50; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-            x = rand.nextInt(60);
-            y =rand.nextInt(100);
-        }
+//        for (int i = 0; i < 50; i++) {
+//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
+//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
+//            x = rand.nextInt(60);
+//            y =rand.nextInt(100);
+//        }
         for (int i = 0; i < 100; i++) {
             scene._geometries.add(new Sphere(new Point3D(x, y, 0), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
                     .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
             x = rand.nextInt(100)*-1;
             y =rand.nextInt(100);
         }
+
+
+        //ופה עשיתי את הכדורים לא רנדומלים. יצא די מכוער
 //       // x=-120,120;
 //        //y=-50,-120
 //        //z=(-5y-250)/3
@@ -323,13 +327,13 @@ public class ReflectionRefractionTests {
 
         ImageWriter imageWriter = new ImageWriter("BVH", 600, 600);
         Render render = new Render()
-                .setMultithreading(3)//
+                .setMultithreading(3)//turn on the threads
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
 
-        scene._geometries.setBVHImprovementOff(false);
-        scene._geometries.buildHierarchicalBVH();
+       scene._geometries.setBVHImprovementOff(false);
+       scene._geometries.buildHierarchicalBVH();
 
         render.renderImage();
         render.writeToImage();
@@ -401,14 +405,17 @@ public class ReflectionRefractionTests {
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.03));
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
 
+       // scene._geometries.setBVHImprovementOff(false);
+        //scene._geometries.buildHierarchicalBVH();
+
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render()
-                //.setMultithreading(3)//play the thread
+                .setMultithreading(3)//turn on the thread
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
         //Uses improvement of super sampling with parameter = 9
-        render.renderImage();
+        render.renderImage(9);
         render.writeToImage();
     }
 
