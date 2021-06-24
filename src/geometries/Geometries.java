@@ -20,10 +20,11 @@ public class Geometries implements Intersectable {
     /**
      * field to check if the BVH improvement is off or on (false is on, true is off)
      */
-    boolean _BVHImprovementOff=true;
+    boolean _BVHImprovementOff = true;
 
     /**
      * setter for the on/off improvement
+     *
      * @param BVH
      */
     public void setBVHImprovementOff(boolean BVH) {
@@ -52,7 +53,6 @@ public class Geometries implements Intersectable {
 
     /**
      * parameter constructor
-     *
      * @param geometries the geometries we send the constructor
      */
     public Geometries(Intersectable... geometries) {
@@ -62,7 +62,6 @@ public class Geometries implements Intersectable {
 
     /**
      * function for add geometry to the list of the geometries
-     *
      * @param geometries the geometries we want to add to the lost of the geometries
      */
     public void add(Intersectable... geometries) {
@@ -82,7 +81,7 @@ public class Geometries implements Intersectable {
     public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> intersections = null;
         for (Intersectable geometry : _listGeometries) {
-            if (_BVHImprovementOff || geometry.getBox().isIntersectBox(ray)) {//check if the ray intersect the box of the geometry at all
+           if (_BVHImprovementOff || geometry.getBox().checkIntersectionaInTree((Geometries) geometry,ray)) {//check if the ray intersect the box of the geometry at all
                 List<GeoPoint> geoIntersections = geometry.findGeoIntersections(ray, maxDistance);
                 //if the list is not empty
                 if (geoIntersections != null) {
@@ -100,7 +99,8 @@ public class Geometries implements Intersectable {
 
     /**
      * help function for building the box of 2 Intersectables
-     * @param left left son
+     *
+     * @param left  left son
      * @param right right son
      * @return the new box the function create
      */
@@ -111,13 +111,13 @@ public class Geometries implements Intersectable {
         double maxX = Math.max(left.getBox().getUpRightBehind().getX(), right.getBox().getUpRightBehind().getX());
         double maxY = Math.max(left.getBox().getUpRightBehind().getY(), right.getBox().getUpRightBehind().getY());
         double maxZ = Math.max(left.getBox().getUpRightBehind().getZ(), right.getBox().getUpRightBehind().getZ());
-        Point3D p1 = new Point3D(minX, minY, minZ);
-        Point3D p2 = new Point3D(maxX, maxY, maxZ);
+        Point3D p1 = new Point3D(minX, minY, minZ);//min down
+        Point3D p2 = new Point3D(maxX, maxY, maxZ);//max- up
         double centerX = maxX - minX / 2;
         double centerY = maxY - minY / 2;
         double centerZ = maxZ - minZ / 2;
         Point3D p3 = new Point3D(centerX, centerY, centerZ);
-        return new Box(p1, p2, p3);
+        return new Box(p2, p1, p3);
     }
 
     /**
@@ -128,9 +128,9 @@ public class Geometries implements Intersectable {
      */
     public void buildHierarchicalBVH() {
         //remove all the infinity geometries from the list
-        List<Intersectable> inifinityGeometries=new LinkedList<>();
-        for(Intersectable item: _listGeometries){
-            if(item instanceof Plane|| item instanceof Tube){
+        List<Intersectable> inifinityGeometries = new LinkedList<>();
+        for (Intersectable item : _listGeometries) {
+            if (item instanceof Plane || item instanceof Tube) {
                 inifinityGeometries.add(item);
             }
         }
@@ -161,7 +161,7 @@ public class Geometries implements Intersectable {
             //add the new geometries we create to the list
             _listGeometries.add(leftRightGeometries);
         }
-
+        _box = _listGeometries.get(0).getBox();
     }
 
 }

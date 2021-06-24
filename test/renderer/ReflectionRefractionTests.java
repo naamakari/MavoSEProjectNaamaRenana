@@ -216,35 +216,77 @@ public class ReflectionRefractionTests {
                 new Polygon(M,O,L,N).setEmission(new Color(94,199,92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)));
 
 
-    double x= Math.random()*100+1;
-    double y=(Math.random()*100+50)*-1;
-        for (int i = 0; i < 1000; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
-            .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-             x= Math.random()*100+1;
-             y=(Math.random()*110+50)*-1;
+//    double x= Math.random()*100+1;
+//    double y=(Math.random()*100+50)*-1;
+//        for (int i = 0; i < 200; i++) {
+//            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
+//            .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
+//             x= Math.random()*100+1;
+//             y=(Math.random()*110+50)*-1;
+//
+//        }
+//        for (int i = 0; i < 5000; i++) {
+//            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
+//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
+//            x= (Math.random()*100+1)*-1;
+//            y=(Math.random()*110+50)*-1;
+//        }
 
+       // x=-120,120;
+        //y=-50,-120
+        //z=(-5y-250)/3
+
+        //39*7
+        double x=-120;
+        double y=-70;
+        for (int i = 0; i < 240; i+=2) {
+            for (int j = 0; j < 20; j+=3) {
+                scene._geometries.add(new Sphere(new Point3D(i+x,j+y,(-5*(j+y)-250)/3),2).setEmission(new Color(java.awt.Color.RED)));
+
+            }
         }
+        //36*7
+         x=120;
+         y=-20;
+        for (int i = 0; i < 20; i+=5) {
+            for (int j = 0; j < 240; j+=3) {
+                scene._geometries.add(new Sphere(new Point3D(j-x,i+y,(-5*(i+y)-250)/3),0.5).setEmission(new Color(java.awt.Color.GRAY)));
 
-        for (int i = 0; i < 1000; i++) {
-            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
-                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-            x= (Math.random()*100+1)*-1;
-            y=(Math.random()*110+50)*-1;
+            }
         }
+//75*4
+        x=-120;
+        y=50;
+        for (int i = 0; i < 240; i+=3) {
+            for (int j = 0; j < 20; j+=3) {
+                scene._geometries.add(new Sphere(new Point3D(i+x,j-y,(-5*(j+y)-250)/3),1).setEmission(new Color(java.awt.Color.BLUE)));
 
-        //scene._geometries.buildHierarchicalBVH();
-       // scene._geometries.setBVHImprovementOff(false);
+            }
+        }
+         x=-120;
+         y=-95;
+        for (int i = 0; i < 240; i+=2) {
+            for (int j = 0; j < 20; j+=3) {
+                scene._geometries.add(new Sphere(new Point3D(i+x,j+y,(-5*(j+y)-250)/3),1).setEmission(new Color(java.awt.Color.YELLOW)));
+
+            }
+        }
 
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.03));
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.03));
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
-
         // scene._lights.add(new SpotLight(new Color(255, 255, 255), new Point3D(-150, -150, 1000),new Vector(1,1,-1)));
+
+
+
+       //scene._geometries.buildHierarchicalBVH();
+        //scene._geometries.setBVHImprovementOff(false);
+
         ImageWriter imageWriter = new ImageWriter("BVH", 600, 600);
-        Render render = new Render() //
+        Render render = new Render()
+                .setMultithreading(3)//
                 .setImageWriter(imageWriter) //
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
@@ -328,5 +370,6 @@ public class ReflectionRefractionTests {
         render.renderImage();
         render.writeToImage();
     }
+
 
 }

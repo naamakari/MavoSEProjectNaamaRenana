@@ -149,6 +149,7 @@ public interface Intersectable {
         }
 
         public boolean isIntersectBox(Ray ray){
+
             Point3D P0=ray.getP0();
             double xP0=P0.getX();
             double yP0=P0.getY();
@@ -159,12 +160,12 @@ public interface Intersectable {
             double yDir=dir.getHead().getY();
             double zDir=dir.getHead().getZ();
 
-            double xMin=_upRightBehind.getX();
-            double yMin=_upRightBehind.getY();
-            double zMin=_upRightBehind.getZ();
-            double xMax=_downLeftFront.getX();
-            double yMax=_downLeftFront.getY();
-            double zMax=_downLeftFront.getZ();
+            double xMin=_downLeftFront.getX();
+            double yMin=_downLeftFront.getY();
+            double zMin=_downLeftFront.getZ();
+            double xMax=_upRightBehind.getX();
+            double yMax=_upRightBehind.getY();
+            double zMax=_upRightBehind.getZ();
 
             double tMinX,tMaxX;
 
@@ -192,7 +193,7 @@ public interface Intersectable {
                 return false;
             }
 
-            if(tMinY>tMinX){//????
+            if(tMinY>tMinX){
                 tMinX=tMinY;
             }
             if(tMaxY<tMaxX){
@@ -214,14 +215,63 @@ public interface Intersectable {
                 return false;
             }
 
-            if(tMinZ>tMinX){
-                tMinX=tMinZ;
-            }
-            if(tMaxZ<tMaxX){
-                tMaxX=tMaxZ;
-            }
             return true;
+     }
+
+        /**
+         * Recursive function that pass over the tree we build from the geometries and
+         * check if the ray is pass over some box
+         * @param geo
+         * @param ray
+         * @return
+         */
+        public boolean checkIntersectionaInTree(Geometries geo,Ray ray){
+            //check if the ray is intersect the big box
+            if (!geo._box.isIntersectBox(ray)){
+                return false;
+            }
+
+            //if we arrived to leaf (left) and the ray is intersect his box
+            if(geo._listGeometries.get(0) instanceof Geometry){
+                if(geo._listGeometries.get(0).getBox().isIntersectBox(ray)) {
+                    return true;
+                }
+                else{
+                    if(geo._listGeometries.get(1) instanceof Geometries) {
+                        return checkIntersectionaInTree((Geometries) geo._listGeometries.get(1), ray);
+                    }
+                    else{
+                        return geo._listGeometries.get(1).getBox().isIntersectBox(ray);
+                    }
+                }
+            }
+            //if we arrived to leaf (right) and the ray is intersect his box
+            if(geo._listGeometries.get(1) instanceof Geometry){
+                if(geo._listGeometries.get(1).getBox().isIntersectBox(ray)) {
+                    return true;
+                }
+                else{
+                    if(geo._listGeometries.get(0) instanceof Geometries) {
+                        return checkIntersectionaInTree((Geometries) geo._listGeometries.get(0), ray);
+                    }
+                    else{
+                        return geo._listGeometries.get(0).getBox().isIntersectBox(ray);
+                    }
+                }
+            }
+
+            boolean leftSon= checkIntersectionaInTree((Geometries) geo._listGeometries.get(0),ray);
+            if(leftSon){
+                return true;
+            }
+            boolean rightSon= checkIntersectionaInTree((Geometries) geo._listGeometries.get(1),ray);
+            if(rightSon){
+                return true;
+            }
+            return false;
+
         }
+
 
     }
 
