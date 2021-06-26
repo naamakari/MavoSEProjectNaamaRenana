@@ -252,16 +252,16 @@ public class ReflectionRefractionTests {
 
 
 
-        M8 = new Point3D(-5, 35, 55);
-        N8 = new Point3D(-15, 35, 42.5);
-        E8 = new Point3D(-25, 35, 42.5);
-        F8 = new Point3D(-35, 35, 55);
-        G8 = new Point3D(-5, 35, 70);
-        H8 = new Point3D(-35, 35, 70);
-        I8 = new Point3D(-15, 35, 80);
-        J8 = new Point3D(-25, 35, 80);
-        K8 = new Point3D(-20, 45, 62.5);
-        L8 = new Point3D(-20, 10, 62.5);
+        M8 = new Point3D(-5, 35, -195);
+        N8 = new Point3D(-15, 35, -207.5);
+        E8 = new Point3D(-25, 35, -207.5);
+        F8 = new Point3D(-35, 35, -195);
+        G8 = new Point3D(-5, 35, -180);
+        H8 = new Point3D(-35, 35, -180);
+        I8 = new Point3D(-15, 35, -170);
+        J8 = new Point3D(-25, 35, -170);
+        K8 = new Point3D(-20, 45, -187.5);
+        L8 = new Point3D(-20, 10, -187.5);
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
@@ -282,6 +282,38 @@ public class ReflectionRefractionTests {
                 new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
                 new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
                 new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(20, 25, -395);
+        N8 = new Point3D(10, 25, -407.5);
+        E8 = new Point3D(0, 25, -407.5);
+        F8 = new Point3D(-10, 25, -395);
+        G8 = new Point3D(20, 25, -380);
+        H8 = new Point3D(-10, 25, -380);
+        I8 = new Point3D(10, 25, -370);
+        J8 = new Point3D(0, 25, -370);
+        K8 = new Point3D(5, 35, -387.5);
+        L8 = new Point3D(5, 0, -387.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
 
 //                //the big sphere
 //                new Sphere(new Point3D(0, -31, 20), 23).setEmission(new Color(53, 85, 204))
@@ -419,6 +451,7 @@ public class ReflectionRefractionTests {
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.03));
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
+
         // scene._lights.add(new SpotLight(new Color(255, 255, 255), new Point3D(-150, -150, 1000),new Vector(1,1,-1)));
 
 
