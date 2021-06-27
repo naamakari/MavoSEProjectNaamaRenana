@@ -572,252 +572,88 @@ public class ReflectionRefractionTests {
                 new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
                 new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
-        //continue
 
-
-        M8 = new Point3D(30, 90, -395);
-        N8 = new Point3D(40, 90, -407.5);
-        E8 = new Point3D(50, 90, -407.5);
-        F8 = new Point3D(60, 90, -395);
-        G8 = new Point3D(30, 90, -380);
-        H8 = new Point3D(60, 90, -380);
-        I8 = new Point3D(40, 90, -370);
-        J8 = new Point3D(50, 90, -370);
-        K8 = new Point3D(45, 100, -387.5);
-        L8 = new Point3D(45, 65, -387.5);
-
-        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
-                //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
-                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
-                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
-                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
-                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
-                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
-                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
-                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
-                //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
-                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
-                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
-                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
-                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
-                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
-                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
-                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
-
-        double x=-50,y=-50,z=0;
-
-        for (int i = 0; i < 20; i++) {
-            x+=20;
-            y+=12;
-            z-=50;
-
-
-            M8 = new Point3D(30+x, 100+y, -395+z);
-            N8 = new Point3D(40+x, 100+y, -407.5+z);
-            E8 = new Point3D(50+x, 100+y, -407.5+z);
-            F8 = new Point3D(60+x, 100+y, -395+z);
-            G8 = new Point3D(30+x, 100+y, -380+z);
-            H8 = new Point3D(60+x, 100+y, -380+z);
-            I8 = new Point3D(40+x, 100+y, -370+z);
-            J8 = new Point3D(50+x, 100+y, -370+z);
-            K8 = new Point3D(45+x, 110+y, -387.5+z);
-            L8 = new Point3D(45+x, 75+y, -387.5+z);
-
-            scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
-                    //UP TRIANGLES
-                    new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
-                    new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
-                    new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
-                    new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
-                    new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
-                    new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
-                    new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
-                    new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
-                    //DOWN TRIANGLES
-                    new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
-                    new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
-                    new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
-                    new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
-                    new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
-                    new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
-                    new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
-                    new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
-        }
-
-
-
-        for (int i = 0; i < 30; i++) {
-
-            x-=30;
-            z-=20;
-            y-=9;
-            M8 = new Point3D(30+x, 100+y, -395+z);
-            N8 = new Point3D(40+x, 100+y, -407.5+z);
-            E8 = new Point3D(50+x, 100+y, -407.5+z);
-            F8 = new Point3D(60+x, 100+y, -395+z);
-            G8 = new Point3D(30+x, 100+y, -380+z);
-            H8 = new Point3D(60+x, 100+y, -380+z);
-            I8 = new Point3D(40+x, 100+y, -370+z);
-            J8 = new Point3D(50+x, 100+y, -370+z);
-            K8 = new Point3D(45+x, 110+y, -387.5+z);
-            L8 = new Point3D(45+x, 75+y, -387.5+z);
-
-            scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
-                    //UP TRIANGLES
-                    new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
-                    new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
-                    new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
-                    new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
-                    new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
-                    new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
-                    new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
-                    new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
-                    //DOWN TRIANGLES
-                    new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
-                    new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
-                    new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
-                    new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
-                    new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
-                    new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
-                    new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
-                    new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
-
-        }
-
-
-
-//                //the big sphere
-//                new Sphere(new Point3D(0, -31, 20), 23).setEmission(new Color(53, 85, 204))
-//                        .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //piramid
-//                //the front right triangle
-//                new Triangle(new Point3D(30, -22, 80), new Point3D(30, -70, 100), new Point3D(50, -60, 50)).setEmission(new Color(214, 212, 78))
-//                        .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //front left triangle
-//                new Triangle(new Point3D(30, -22, 80), new Point3D(5, -60, 50), new Point3D(30, -70, 100)).setEmission(new Color(214, 212, 78))
-//                        .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //behind triangle
-//                new Triangle(new Point3D(30, -22, 80), new Point3D(5, -60, 50), new Point3D(50, -60, 50)).setEmission(new Color(214, 212, 78))
-//                        .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //under triangle
-//                new Triangle(new Point3D(5, -60, 50), new Point3D(50, -60, 50), new Point3D(30, -70, 100)).setEmission(new Color(214, 212, 78))
-//                        .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //front right
-//                new Polygon(P, S, L, N).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //front left
-//                new Polygon(Q, P, N, M).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //BEHIND right
-//                new Polygon(R, S, L, O).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //BEHIND LEFT
-//                new Polygon(Q, R, O, M).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //UP
-//                new Polygon(Q, R, S, P).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)),
-//                //DOWN
-//                new Polygon(M, O, L, N).setEmission(new Color(94, 199, 92)).setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(500)));
-
-//זה הלולאות שאת עשית
-//    double x= Math.random()*100+1;
-//    double y=(Math.random()*100+50)*-1;
-//        for (int i = 0; i < 200; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
-//            .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//             x= Math.random()*100+1;
-//             y=(Math.random()*110+50)*-1;
+//        double x=-50,y=-50,z=0;
 //
-        //}
-//        for (int i = 0; i < 1000; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x,y,(-5*y-250)/3),1).setEmission(new Color(Math.random()*255+1,Math.random()*255+1,Math.random()*255+1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x= (Math.random()*100+1)*-1;
-//            y=(Math.random()*110+50)*-1;
+//        for (int i = 0; i < 20; i++) {
+//            x+=20;
+//            y+=12;
+//            z-=50;
+//
+//
+//            M8 = new Point3D(30+x, 100+y, -395+z);
+//            N8 = new Point3D(40+x, 100+y, -407.5+z);
+//            E8 = new Point3D(50+x, 100+y, -407.5+z);
+//            F8 = new Point3D(60+x, 100+y, -395+z);
+//            G8 = new Point3D(30+x, 100+y, -380+z);
+//            H8 = new Point3D(60+x, 100+y, -380+z);
+//            I8 = new Point3D(40+x, 100+y, -370+z);
+//            J8 = new Point3D(50+x, 100+y, -370+z);
+//            K8 = new Point3D(45+x, 110+y, -387.5+z);
+//            L8 = new Point3D(45+x, 75+y, -387.5+z);
+//
+//            scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+//                    //UP TRIANGLES
+//                    new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+//                    new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+//                    new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+//                    new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+//                    new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+//                    new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+//                    new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+//                    new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
+//                    //DOWN TRIANGLES
+//                    new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+//                    new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+//                    new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+//                    new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+//                    new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+//                    new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+//                    new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+//                    new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 //        }
 
-//זה לולאות שאני עשיתי, שיחקתי פה קצת עם המקומות של האיקס והy
-        //סתם יירקתי חלק מהמקומות כדי שיצא מקבצים רחוקים, אבל תכלס עדיין אין מספיק כדורים בציור. אולי אפשר להגדיל אותו קצת. מה שבאלנו תכלס
-//       double  x = Math.random() * 100 + 1;
-//       double  y = (Math.random() * 100 + 50) * -1;
-//        for (int i = 0; i < 200; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x = Math.random() * 100 + 1;
-//            y = (Math.random() * 110 + 50) * -1;
+
+
+//        for (int i = 0; i < 30; i++) {
+//
+//            x-=30;
+//            z-=20;
+//            y-=9;
+//            M8 = new Point3D(30+x, 100+y, -395+z);
+//            N8 = new Point3D(40+x, 100+y, -407.5+z);
+//            E8 = new Point3D(50+x, 100+y, -407.5+z);
+//            F8 = new Point3D(60+x, 100+y, -395+z);
+//            G8 = new Point3D(30+x, 100+y, -380+z);
+//            H8 = new Point3D(60+x, 100+y, -380+z);
+//            I8 = new Point3D(40+x, 100+y, -370+z);
+//            J8 = new Point3D(50+x, 100+y, -370+z);
+//            K8 = new Point3D(45+x, 110+y, -387.5+z);
+//            L8 = new Point3D(45+x, 75+y, -387.5+z);
+//
+//            scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+//                    //UP TRIANGLES
+//                    new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+//                    new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+//                    new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+//                    new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+//                    new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+//                    new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+//                    new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+//                    new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
+//                    //DOWN TRIANGLES
+//                    new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+//                    new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+//                    new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+//                    new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+//                    new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+//                    new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+//                    new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+//                    new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 //
 //        }
-//        for (int i = 0; i < 200; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x = (Math.random() * 100 + 1) * -1;
-//            y = (Math.random() * 110 + 50) * -1;
-//        }
-
-//        for (int i = 0; i < 100; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x = (Math.random() * 100 + 1) * -1;
-//            y =rand.nextInt(50)*-1;
-//        }
-//        for (int i = 0; i < 50; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x = rand.nextInt(60);
-//            y =rand.nextInt(50)*-1;
-//        }
-//        for (int i = 0; i < 50; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x, y, (-5 * y - 250) / 3), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x = rand.nextInt(60);
-//            y =rand.nextInt(100);
-//        }
-//        for (int i = 0; i < 100; i++) {
-//            scene._geometries.add(new Sphere(new Point3D(x, y, 0), 1).setEmission(new Color(Math.random() * 255 + 1, Math.random() * 255 + 1, Math.random() * 255 + 1))
-//                    .setMaterial(new Material().setKd(0.8).setkT(0.02).setkR(0).setKs(1).setnShininess(300)));
-//            x = rand.nextInt(100)*-1;
-//            y =rand.nextInt(100);
-//        }
 
 
-        //ופה עשיתי את הכדורים לא רנדומלים. יצא די מכוער
-//       // x=-120,120;12
-//        //y=-50,-120
-//        //z=(-5y-250)/3
-//
-//        //39*7
-//        double x=-120;
-//        double y=-70;
-//        for (int i = 0; i < 240; i+=2) {
-//            for (int j = 0; j < 20; j+=3) {
-//                scene._geometries.add(new Sphere(new Point3D(i+x,j+y,(-5*(j+y)-250)/3),2).setEmission(new Color(java.awt.Color.RED)));
-//
-//            }
-//        }
-//        //36*7
-//         x=120;
-//         y=-20;
-//        for (int i = 0; i < 20; i+=5) {
-//            for (int j = 0; j < 240; j+=3) {
-//                scene._geometries.add(new Sphere(new Point3D(j-x,i+y,(-5*(i+y)-250)/3),0.5).setEmission(new Color(java.awt.Color.GRAY)));
-//
-//            }
-//        }
-////75*4
-//        x=-120;
-//        y=50;
-//        for (int i = 0; i < 240; i+=3) {
-//            for (int j = 0; j < 20; j+=3) {
-//                scene._geometries.add(new Sphere(new Point3D(i+x,j-y,(-5*(j+y)-250)/3),1).setEmission(new Color(java.awt.Color.BLUE)));
-//
-//            }
-//        }
-//         x=-120;
-//         y=-95;
-//        for (int i = 0; i < 240; i+=2) {
-//            for (int j = 0; j < 20; j+=3) {
-//                scene._geometries.add(new Sphere(new Point3D(i+x,j+y,(-5*(j+y)-250)/3),1).setEmission(new Color(java.awt.Color.YELLOW)));
-//
-//            }
-//        }
 
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.08));
@@ -835,10 +671,10 @@ public class ReflectionRefractionTests {
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
 
-        scene._geometries.setBVHImprovementOff(false);
-        scene._geometries.buildHierarchicalBVH();
+        //scene._geometries.setBVHImprovementOff(false);
+        //scene._geometries.buildHierarchicalBVH();
 
-        render.renderImage();
+        render.renderImage(9);
         render.writeToImage();
     }
 
@@ -908,8 +744,8 @@ public class ReflectionRefractionTests {
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.03));
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
 
-        // scene._geometries.setBVHImprovementOff(false);
-        //scene._geometries.buildHierarchicalBVH();
+        scene._geometries.setBVHImprovementOff(false);
+        scene._geometries.buildHierarchicalBVH();
 
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render()
