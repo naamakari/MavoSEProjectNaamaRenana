@@ -283,16 +283,16 @@ public class ReflectionRefractionTests {
                 new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
                 new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
 
-        M8 = new Point3D(20, 25, -395);
-        N8 = new Point3D(10, 25, -407.5);
-        E8 = new Point3D(0, 25, -407.5);
-        F8 = new Point3D(-10, 25, -395);
-        G8 = new Point3D(20, 25, -380);
-        H8 = new Point3D(-10, 25, -380);
-        I8 = new Point3D(10, 25, -370);
-        J8 = new Point3D(0, 25, -370);
-        K8 = new Point3D(5, 35, -387.5);
-        L8 = new Point3D(5, 0, -387.5);
+        M8 = new Point3D(20, 80, -395);
+        N8 = new Point3D(10, 80, -407.5);
+        E8 = new Point3D(0, 80, -407.5);
+        F8 = new Point3D(-10, 80, -395);
+        G8 = new Point3D(20, 80, -380);
+        H8 = new Point3D(-10, 80, -380);
+        I8 = new Point3D(10, 80, -370);
+        J8 = new Point3D(0, 80, -370);
+        K8 = new Point3D(5, 90, -387.5);
+        L8 = new Point3D(5, 55, -387.5);
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
@@ -314,6 +314,252 @@ public class ReflectionRefractionTests {
                 new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
                 new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
 
+        M8 = new Point3D(90, 60, 100);
+        N8 = new Point3D(80, 60, 87.5);
+        E8 = new Point3D(70, 60, 87.5);
+        F8 = new Point3D(60, 60, 100);
+        G8 = new Point3D(90, 60, 115);
+        H8 = new Point3D(60, 60, 115);
+        I8 = new Point3D(80, 60, 125);
+        J8 = new Point3D(70, 60, 125);
+        K8 = new Point3D(75, 70, 107.5);
+        L8 = new Point3D(75, 35, 107.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(55, 0, 300);
+        N8 = new Point3D(45, 0, 287.5);
+        E8 = new Point3D(35, 0, 287.5);
+        F8 = new Point3D(25, 0, 300);
+        G8 = new Point3D(55, 0, 315);
+        H8 = new Point3D(25, 0, 315);
+        I8 = new Point3D(45, 0, 325);
+        J8 = new Point3D(35, 0, 325);
+        K8 = new Point3D(40, 10, 307.5);
+        L8 = new Point3D(40, -25, 307.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(70, 50, -100);
+        N8 = new Point3D(60, 50, -112.5);
+        E8 = new Point3D(50, 50, -112.5);
+        F8 = new Point3D(40, 50, -100);
+        G8 = new Point3D(70, 50, -85);
+        H8 = new Point3D(40, 50, -85);
+        I8 = new Point3D(60, 50, -75);
+        J8 = new Point3D(50, 50, -75);
+        K8 = new Point3D(55, 60, -92.5);
+        L8 = new Point3D(55, 25, -92.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(-90, 60, 100);
+        N8 = new Point3D(-80, 60, 87.5);
+        E8 = new Point3D(-70, 60, 87.5);
+        F8 = new Point3D(-60, 60, 100);
+        G8 = new Point3D(-90, 60, 115);
+        H8 = new Point3D(-60, 60, 115);
+        I8 = new Point3D(-80, 60, 125);
+        J8 = new Point3D(-70, 60, 125);
+        K8 = new Point3D(-75, 70, 107.5);
+        L8 = new Point3D(-75, 35, 107.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(-55, 0, 500);
+        N8 = new Point3D(-45, 0, 487.5);
+        E8 = new Point3D(-35, 0, 487.5);
+        F8 = new Point3D(-25, 0, 500);
+        G8 = new Point3D(-55, 0, 515);
+        H8 = new Point3D(-25, 0, 515);
+        I8 = new Point3D(-45, 0, 525);
+        J8 = new Point3D(-35, 0, 525);
+        K8 = new Point3D(-40, 10, 507.5);
+        L8 = new Point3D(-40, -25, 507.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(-70, 50, -100);
+        N8 = new Point3D(-60, 50, -112.5);
+        E8 = new Point3D(-50, 50, -112.5);
+        F8 = new Point3D(-40, 50, -100);
+        G8 = new Point3D(-70, 50, -85);
+        H8 = new Point3D(-40, 50, -85);
+        I8 = new Point3D(-60, 50, -75);
+        J8 = new Point3D(-50, 50, -75);
+        K8 = new Point3D(-55, 60, -92.5);
+        L8 = new Point3D(-55, 25, -92.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+
+        M8 = new Point3D(-30, -20, -395);
+        N8 = new Point3D(-40, -20, -407.5);
+        E8 = new Point3D(-50, -20, -407.5);
+        F8 = new Point3D(-60, -20, -395);
+        G8 = new Point3D(-30, -20, -380);
+        H8 = new Point3D(-60, -20, -380);
+        I8 = new Point3D(-40, -20, -370);
+        J8 = new Point3D(-50, -20, -370);
+        K8 = new Point3D(-45, -10, -387.5);
+        L8 = new Point3D(-45, -45, -387.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+        M8 = new Point3D(30, 100, -395);
+        N8 = new Point3D(40, 100, -407.5);
+        E8 = new Point3D(50, 100, -407.5);
+        F8 = new Point3D(60, 100, -395);
+        G8 = new Point3D(30, 100, -380);
+        H8 = new Point3D(60, 100, -380);
+        I8 = new Point3D(40, 100, -370);
+        J8 = new Point3D(50, 100, -370);
+        K8 = new Point3D(45, 110, -387.5);
+        L8 = new Point3D(45, 75, -387.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
+                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
+                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
+                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
+                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
+                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
+                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
+                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
+                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
+                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
+                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
+                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
+                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
+                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
+                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
 
 //                //the big sphere
 //                new Sphere(new Point3D(0, -31, 20), 23).setEmission(new Color(53, 85, 204))
@@ -462,8 +708,8 @@ public class ReflectionRefractionTests {
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
 
-        scene._geometries.setBVHImprovementOff(false);
-        scene._geometries.buildHierarchicalBVH();
+       // scene._geometries.setBVHImprovementOff(false);
+        //scene._geometries.buildHierarchicalBVH();
 
         render.renderImage();
         render.writeToImage();
