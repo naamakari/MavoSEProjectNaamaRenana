@@ -179,6 +179,17 @@ public class ReflectionRefractionTests {
         Random rand = new Random();
 
 
+        Material material=new Material().setnShininess(500).setkT(0.3).setKs(0.3).setKd(0.5);
+        Color color1=new Color(224,233,236);
+        Color color2=new Color(169,169,170);
+        Color color3=new Color(198,203,204);
+        Color color4=new Color(169,169,170);
+        Color color5=new Color(194,204,193);
+        Color color6=new Color(169,169,170);
+        Color color7=new Color(191,200,204);
+        Color color8=new Color(169,169,170);
+
+
         Point3D M8 = new Point3D(15, 0, 55);
         Point3D N8 = new Point3D(5, 0, 42.5);
         Point3D E8 = new Point3D(-5, 0, 42.5);
@@ -191,33 +202,32 @@ public class ReflectionRefractionTests {
         Point3D L8 = new Point3D(0, -25, 62.5);
 
         Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
-                .setViewPlaneSize(200, 200).setDistance(1000);
+                .setViewPlaneSize(500, 500).setDistance(1000);
         scene.setAmbientLight(new AmbientLight());
         scene._geometries.add(
                 //down
                 new Polygon(new Point3D(120, -50, 0), new Point3D(120, -110, 100), new Point3D(-120, -110, 100), new Point3D(-120, -50, 0))
                         .setEmission(new Color(239, 241, 186)).setMaterial(new Material().setKs(0.3).setnShininess(400).setKd(0.5).setkR(0).setkT(0)));
 
-
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
          M8 = new Point3D(35, 35, 55);
          N8 = new Point3D(25, 35, 42.5);
@@ -232,23 +242,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color8)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color5)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color8)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color5)).setMaterial(material));
 
 
 
@@ -265,23 +275,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(20, 80, -395);
         N8 = new Point3D(10, 80, -407.5);
@@ -296,23 +306,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(90, 60, 100);
         N8 = new Point3D(80, 60, 87.5);
@@ -327,23 +337,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(55, 0, 300);
         N8 = new Point3D(45, 0, 287.5);
@@ -358,23 +368,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(70, 50, -100);
         N8 = new Point3D(60, 50, -112.5);
@@ -389,23 +399,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(-90, 60, 100);
         N8 = new Point3D(-80, 60, 87.5);
@@ -420,23 +430,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(-55, 0, 500);
         N8 = new Point3D(-45, 0, 487.5);
@@ -451,23 +461,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(-70, 50, -100);
         N8 = new Point3D(-60, 50, -112.5);
@@ -482,23 +492,23 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
 
         M8 = new Point3D(-30, -20, -395);
         N8 = new Point3D(-40, -20, -407.5);
@@ -513,23 +523,24 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
+
         M8 = new Point3D(30, 100, -395);
         N8 = new Point3D(40, 100, -407.5);
         E8 = new Point3D(50, 100, -407.5);
@@ -543,23 +554,139 @@ public class ReflectionRefractionTests {
 
         scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
                 //UP TRIANGLES
-                new Triangle(K8, I8, G8).setEmission(new Color(157, 255, 69)),
-                new Triangle(K8, G8, M8).setEmission(new Color(238, 255, 29)),
-                new Triangle(K8, M8, N8).setEmission(new Color(255, 209, 51)),
-                new Triangle(K8, N8, E8).setEmission(new Color(255, 154, 28)),
-                new Triangle(K8, E8, F8).setEmission(new Color(255, 97, 64)),
-                new Triangle(K8, F8, H8).setEmission(new Color(255, 83, 128)),
-                new Triangle(K8, H8, J8).setEmission(new Color(255, 89, 175)),
-                new Triangle(K8, J8, I8).setEmission(new Color(255, 89, 252)),
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
                 //DOWN TRIANGLES
-                new Triangle(L8, I8, G8).setEmission(new Color(180, 82, 255)),
-                new Triangle(L8, G8, M8).setEmission(new Color(24, 193, 158)),
-                new Triangle(L8, M8, N8).setEmission(new Color(25, 193, 188)),
-                new Triangle(L8, N8, E8).setEmission(new Color(27, 123, 193)),
-                new Triangle(L8, E8, F8).setEmission(new Color(25, 83, 193)),
-                new Triangle(L8, F8, H8).setEmission(new Color(87, 128, 193)),
-                new Triangle(L8, H8, J8).setEmission(new Color(96, 86, 193)),
-                new Triangle(L8, J8, I8).setEmission(new Color(175, 136, 193)));
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
+
+        //continue
+
+
+        M8 = new Point3D(30, 90, -395);
+        N8 = new Point3D(40, 90, -407.5);
+        E8 = new Point3D(50, 90, -407.5);
+        F8 = new Point3D(60, 90, -395);
+        G8 = new Point3D(30, 90, -380);
+        H8 = new Point3D(60, 90, -380);
+        I8 = new Point3D(40, 90, -370);
+        J8 = new Point3D(50, 90, -370);
+        K8 = new Point3D(45, 100, -387.5);
+        L8 = new Point3D(45, 65, -387.5);
+
+        scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                //UP TRIANGLES
+                new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
+                //DOWN TRIANGLES
+                new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
+
+        double x=-50,y=-50,z=0;
+
+        for (int i = 0; i < 20; i++) {
+            x+=20;
+            y+=12;
+            z-=50;
+
+
+            M8 = new Point3D(30+x, 100+y, -395+z);
+            N8 = new Point3D(40+x, 100+y, -407.5+z);
+            E8 = new Point3D(50+x, 100+y, -407.5+z);
+            F8 = new Point3D(60+x, 100+y, -395+z);
+            G8 = new Point3D(30+x, 100+y, -380+z);
+            H8 = new Point3D(60+x, 100+y, -380+z);
+            I8 = new Point3D(40+x, 100+y, -370+z);
+            J8 = new Point3D(50+x, 100+y, -370+z);
+            K8 = new Point3D(45+x, 110+y, -387.5+z);
+            L8 = new Point3D(45+x, 75+y, -387.5+z);
+
+            scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                    //UP TRIANGLES
+                    new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                    new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                    new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                    new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                    new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                    new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                    new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                    new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
+                    //DOWN TRIANGLES
+                    new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                    new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                    new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                    new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                    new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                    new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                    new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                    new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
+        }
+
+
+
+        for (int i = 0; i < 30; i++) {
+
+            x-=30;
+            z-=20;
+            y-=9;
+            M8 = new Point3D(30+x, 100+y, -395+z);
+            N8 = new Point3D(40+x, 100+y, -407.5+z);
+            E8 = new Point3D(50+x, 100+y, -407.5+z);
+            F8 = new Point3D(60+x, 100+y, -395+z);
+            G8 = new Point3D(30+x, 100+y, -380+z);
+            H8 = new Point3D(60+x, 100+y, -380+z);
+            I8 = new Point3D(40+x, 100+y, -370+z);
+            J8 = new Point3D(50+x, 100+y, -370+z);
+            K8 = new Point3D(45+x, 110+y, -387.5+z);
+            L8 = new Point3D(45+x, 75+y, -387.5+z);
+
+            scene._geometries.add(new Polygon(I8, G8, M8, N8, E8, F8, H8, J8).setEmission(new Color(java.awt.Color.WHITE)),
+                    //UP TRIANGLES
+                    new Triangle(K8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                    new Triangle(K8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                    new Triangle(K8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                    new Triangle(K8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                    new Triangle(K8, E8, F8).setEmission(new Color(color4)).setMaterial(material),
+                    new Triangle(K8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                    new Triangle(K8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                    new Triangle(K8, J8, I8).setEmission(new Color(color8)).setMaterial(material),
+                    //DOWN TRIANGLES
+                    new Triangle(L8, I8, G8).setEmission(new Color(color1)).setMaterial(material),
+                    new Triangle(L8, G8, M8).setEmission(new Color(color2)).setMaterial(material),
+                    new Triangle(L8, M8, N8).setEmission(new Color(color3)).setMaterial(material),
+                    new Triangle(L8, N8, E8).setEmission(new Color(color4)).setMaterial(material),
+                    new Triangle(L8, E8, F8).setEmission(new Color(color5)).setMaterial(material),
+                    new Triangle(L8, F8, H8).setEmission(new Color(color6)).setMaterial(material),
+                    new Triangle(L8, H8, J8).setEmission(new Color(color7)).setMaterial(material),
+                    new Triangle(L8, J8, I8).setEmission(new Color(color8)).setMaterial(material));
+
+        }
+
+
 
 //                //the big sphere
 //                new Sphere(new Point3D(0, -31, 20), 23).setEmission(new Color(53, 85, 204))
@@ -652,7 +779,7 @@ public class ReflectionRefractionTests {
 
 
         //ופה עשיתי את הכדורים לא רנדומלים. יצא די מכוער
-//       // x=-120,120;
+//       // x=-120,120;12
 //        //y=-50,-120
 //        //z=(-5y-250)/3
 //
@@ -693,12 +820,12 @@ public class ReflectionRefractionTests {
 //        }
 
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
-        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.03));
+        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(0, 64, 70), new Vector(0, -5, 1)).setKc(0.8).setKl(0.08));
         //we add source light- spot one, with discount coefficients. We wanted the light not to be too strong so we set the coefficient kc quite high and also kl not really low
-        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.03));
-        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
+        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.3));
+        scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.3));
+       // scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-110, -102, 88), new Vector(125, 102, -18)).setKc(0.08).setKl(0.03));
 
-        // scene._lights.add(new SpotLight(new Color(255, 255, 255), new Point3D(-150, -150, 1000),new Vector(1,1,-1)));
 
 
         ImageWriter imageWriter = new ImageWriter("BVH", 600, 600);
@@ -708,8 +835,8 @@ public class ReflectionRefractionTests {
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
 
-       // scene._geometries.setBVHImprovementOff(false);
-        //scene._geometries.buildHierarchicalBVH();
+        scene._geometries.setBVHImprovementOff(false);
+        scene._geometries.buildHierarchicalBVH();
 
         render.renderImage();
         render.writeToImage();
