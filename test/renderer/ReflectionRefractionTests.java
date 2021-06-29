@@ -671,8 +671,8 @@ public class ReflectionRefractionTests {
                 .setCamera(camera) //
                 .setRayTracerBase(new BasicRayTracer(scene));
 
-        //scene._geometries.setBVHImprovementOff(false);
-        //scene._geometries.buildHierarchicalBVH();
+        scene._geometries.setBVHImprovementOff(false);//turn on the BVH improvement
+        scene._geometries.buildHierarchicalBVH();//build the tree for the improvement
 
         render.renderImage(9);
         render.writeToImage();
@@ -744,8 +744,8 @@ public class ReflectionRefractionTests {
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(48, 48, 10), new Vector(-66, -75, 23)).setKc(0.08).setKl(0.03));
         scene._lights.add(new SpotLight(new Color(255, 253, 160), new Point3D(-48, 48, 10), new Vector(66, -71, 23)).setKc(0.08).setKl(0.03));
 
-        scene._geometries.setBVHImprovementOff(false);//turn on the BVH improvement
-        scene._geometries.buildHierarchicalBVH();//build the tree for the improvement
+        //scene._geometries.setBVHImprovementOff(false);//turn on the BVH improvement
+        //scene._geometries.buildHierarchicalBVH();//build the tree for the improvement
 
         ImageWriter imageWriter = new ImageWriter("Mp1", 600, 600);
         Render render = new Render()
